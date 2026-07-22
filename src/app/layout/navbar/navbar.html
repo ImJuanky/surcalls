@@ -1,0 +1,51 @@
+<header class="navbar" [class.navbar--scrolled]="isScrolled">
+    <div class="navbar__container">
+  
+      <!-- Logo -->
+      <a href="#hero" class="navbar__logo" aria-label="SurCalls - Inicio">
+        <span class="navbar__logo-mark">Sur<span class="navbar__logo-accent">Calls</span></span>
+      </a>
+  
+      <!-- Navegación desktop -->
+      <nav class="navbar__links" aria-label="Navegación principal">
+        <a href="#what-we-do" class="navbar__link">Qué hacemos</a>
+        <a href="#services" class="navbar__link">Servicios</a>
+        <a href="#ai-voice-agents" class="navbar__link">Agentes IA</a>
+        <a href="#use-cases" class="navbar__link">Casos de uso</a>
+        <a href="#contact" class="navbar__link">Contacto</a>
+      </nav>
+  
+      <!-- CTA desktop -->
+      <a href="#contact" class="navbar__cta">
+        Solicita una demo
+      </a>
+  
+      <!-- Botón hamburguesa (mobile) -->
+      <button
+        class="navbar__toggle"
+        [class.navbar__toggle--active]="isMenuOpen"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen"
+        aria-label="Abrir menú de navegación"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+  
+    </div>
+  
+    <!-- Overlay mobile -->
+    <div class="navbar__mobile-menu" [class.navbar__mobile-menu--open]="isMenuOpen">
+      <nav class="navbar__mobile-links" aria-label="Navegación móvil">
+        <a href="#what-we-do" class="navbar__mobile-link" (click)="closeMenu()">Qué hacemos</a>
+        <a href="#services" class="navbar__mobile-link" (click)="closeMenu()">Servicios</a>
+        <a href="#ai-voice-agents" class="navbar__mobile-link" (click)="closeMenu()">Agentes IA</a>
+        <a href="#use-cases" class="navbar__mobile-link" (click)="closeMenu()">Casos de uso</a>
+        <a href="#contact" class="navbar__mobile-link" (click)="closeMenu()">Contacto</a>
+      </nav>
+      <a href="#contact" class="navbar__mobile-cta" (click)="closeMenu()">
+        Solicita una demo
+      </a>
+    </div>
+  </header>
