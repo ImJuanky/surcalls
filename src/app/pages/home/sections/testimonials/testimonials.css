@@ -1,5 +1,5 @@
 .testimonials {
-  padding: 140px 24px;
+  padding: 120px 24px 100px;
   border-top: 1px solid var(--hairline-soft);
 }
 
@@ -45,7 +45,8 @@
   height: 52px;
   border-radius: 50%;
   border: 1px dashed rgba(0, 229, 160, 0.4);
-  font-size: 22px;
+  font-size: 20px;
+  color: var(--color-accent-primary);
   transform: rotate(-8deg);
   transition: transform var(--transition-smooth), border-color var(--transition-base);
 }

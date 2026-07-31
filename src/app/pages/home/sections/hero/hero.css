@@ -557,6 +557,19 @@
   }
 }
 
+/* Rango tablet (768–1023px): con min-height en 0, el mockup se ajusta a su
+   contenido real y ya no fuerza hueco vacío. Aun así, en esta franja el
+   layout sigue siendo de una sola columna (el grid a 2 columnas solo entra
+   a partir de 1024px, ver arriba), así que fijamos un ancho de columna
+   contenido para que el mockup no ocupe todo el ancho del viewport y
+   mantenga la misma proporción que en desktop. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero__mockup {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
 .hero__bottom-line {
   position: absolute;
   left: 24px;

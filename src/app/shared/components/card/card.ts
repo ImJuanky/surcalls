@@ -1,4 +1,5 @@
 import { Component, input } from '@angular/core';
+import { Icon } from '../icon/icon';
 
 /**
  * Tarjeta de cristal reutilizable (icono + título + cuerpo vía ng-content)
@@ -8,7 +9,7 @@ import { Component, input } from '@angular/core';
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [Icon],
   templateUrl: './card.html',
   styleUrl: './card.css',
 })

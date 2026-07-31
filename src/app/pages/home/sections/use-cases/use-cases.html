@@ -1,6 +1,7 @@
 <section class="use-cases" id="use-cases">
   <div class="container">
     <app-section-title
+      size="lg"
       kicker="Casos de uso"
       title="Un problema distinto en cada sector. La misma solución de fondo"
       description="SURCALLS se adapta al negocio, no al revés. Así ayuda cada sector."
@@ -8,8 +9,15 @@
 
     <div class="use-cases__rows">
       @for (item of useCases; track item.sector; let i = $index) {
-        <article class="use-cases__row" [class.use-cases__row--reverse]="i % 2 === 1" appScrollReveal>
-          <span class="use-cases__row-icon" aria-hidden="true">{{ item.icon }}</span>
+        <article
+          class="use-cases__row"
+          [class.use-cases__row--reverse]="i % 2 === 1"
+          appScrollReveal
+          [revealVariant]="i % 2 === 1 ? 'side-right' : 'side-left'"
+        >
+          <span class="use-cases__row-icon" aria-hidden="true">
+            <app-icon [name]="item.icon"></app-icon>
+          </span>
           <div class="use-cases__row-body">
             <h3 class="use-cases__row-title">{{ item.sector }}</h3>
             <p class="use-cases__row-text">{{ item.text }}</p>

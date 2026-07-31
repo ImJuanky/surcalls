@@ -11,7 +11,10 @@
   --color-surface-2: #171D2C;
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-strong: rgba(255, 255, 255, 0.16);
-  --color-text-tertiary: #5C6478;
+  /* #5C6478 medía 3.26:1 sobre --color-bg (falla AA, mínimo 4.5:1 en texto
+     normal). Subido a un tono que pasa AA mientras sigue leyéndose como
+     "terciario" frente a --color-text-secondary. */
+  --color-text-tertiary: #838BA3;
   --color-danger: #FF6B6B;
   --color-success: var(--color-accent-primary);
 
@@ -120,10 +123,49 @@ select:focus-visible,
   transform: translateY(0);
 }
 
+/* ---------- Variantes de reveal: 2-3 secciones con gesto de entrada
+   propio en vez de repetir siempre fade+slide-up. ---------- */
+
+[appScrollReveal].reveal--side-left {
+  transform: translate3d(-36px, 0, 0);
+}
+
+[appScrollReveal].reveal--side-left.is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+[appScrollReveal].reveal--side-right {
+  transform: translate3d(36px, 0, 0);
+}
+
+[appScrollReveal].reveal--side-right.is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+[appScrollReveal].reveal--scale {
+  transform: scale(0.94);
+}
+
+[appScrollReveal].reveal--scale.is-visible {
+  transform: scale(1);
+}
+
+[appScrollReveal].reveal--blur {
+  transform: translateY(14px);
+  filter: blur(8px);
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo), filter 0.7s var(--ease-out-expo);
+}
+
+[appScrollReveal].reveal--blur.is-visible {
+  transform: translateY(0);
+  filter: blur(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   [appScrollReveal] {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 }

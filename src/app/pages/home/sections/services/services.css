@@ -1,5 +1,5 @@
 .services {
-  padding: 140px 24px;
+  padding: 160px 24px 140px;
   border-top: 1px solid var(--hairline-soft);
 }
 
@@ -43,11 +43,12 @@
     left: 0;
     top: 0;
     width: 2px;
-    height: calc(100% / 6);
     background-color: var(--color-accent-primary);
     box-shadow: 0 0 12px rgba(0, 229, 160, 0.5);
-    transform: translateY(calc(var(--active-index, 0) * 100%));
-    transition: transform 0.45s var(--ease-out-expo);
+    /* top/height se fijan por JS (medidos del DOM real, no asumidos) vía
+       [style.transform] / [style.height.px] — así el indicador nunca se
+       desalinea si un título se parte en dos líneas. */
+    transition: transform 0.45s var(--ease-out-expo), height 0.3s var(--ease-out-expo);
   }
 }
 
@@ -116,7 +117,8 @@
 }
 
 .services__detail-icon {
-  font-size: 40px;
+  font-size: 36px;
+  color: var(--color-accent-primary);
   margin-bottom: 24px;
 }
 

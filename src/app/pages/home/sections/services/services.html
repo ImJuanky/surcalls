@@ -1,17 +1,24 @@
 <section class="services" id="services">
   <div class="container">
     <app-section-title
+      size="lg"
       kicker="Servicios"
       title="Todo lo que necesitas para automatizar tu negocio"
       description="Seis soluciones de IA que trabajan juntas: atienden a tus clientes, venden por ti y liberan tiempo de tu equipo."
     ></app-section-title>
 
     <div class="services__layout" appScrollReveal>
-      <div class="services__list" role="tablist" aria-label="Servicios de SURCALLS" [style.--active-index]="activeIndex()">
-        <span class="services__indicator" aria-hidden="true"></span>
+      <div class="services__list" role="tablist" aria-label="Servicios de SURCALLS" #listEl>
+        <span
+          class="services__indicator"
+          aria-hidden="true"
+          [style.transform]="'translateY(' + indicatorTop() + 'px)'"
+          [style.height.px]="indicatorHeight()"
+        ></span>
 
         @for (service of services; track service.title; let i = $index) {
           <button
+            #tabBtn
             type="button"
             role="tab"
             class="services__tab"
@@ -28,7 +35,9 @@
       </div>
 
       <div class="services__detail" role="tabpanel">
-        <span class="services__detail-icon" aria-hidden="true">{{ active.icon }}</span>
+        <span class="services__detail-icon" aria-hidden="true">
+          <app-icon [name]="active.icon"></app-icon>
+        </span>
         <h3 class="services__detail-title">{{ active.title }}</h3>
         <p class="services__detail-text">{{ active.text }}</p>
         <app-button variant="secondary" [href]="active.anchor">Más información</app-button>

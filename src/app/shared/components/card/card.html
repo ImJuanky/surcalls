@@ -1,6 +1,8 @@
 <article class="card">
   @if (icon()) {
-    <div class="card__icon" aria-hidden="true">{{ icon() }}</div>
+    <div class="card__icon" aria-hidden="true">
+      <app-icon [name]="icon()"></app-icon>
+    </div>
   }
 
   @if (title()) {

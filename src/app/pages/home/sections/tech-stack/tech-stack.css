@@ -1,5 +1,5 @@
 .tech-stack {
-  padding: 140px 0;
+  padding: 96px 0;
   border-top: 1px solid var(--hairline-soft);
   overflow: hidden;
 }
@@ -48,8 +48,9 @@
 }
 
 .tech-stack__icon {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1;
+  color: var(--color-accent-primary);
 }
 
 .tech-stack__name {

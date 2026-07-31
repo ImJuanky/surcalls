@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { SectionTitle } from '../../../../shared/components/section-title/section-title';
+import { Icon, IconName } from '../../../../shared/components/icon/icon';
 import { ScrollReveal } from '../../../../shared/directives/scroll-reveal';
 
 interface Guarantee {
-  icon: string;
+  icon: IconName;
   title: string;
   text: string;
 }
@@ -24,29 +25,29 @@ interface Guarantee {
 @Component({
   selector: 'app-testimonials',
   standalone: true,
-  imports: [SectionTitle, ScrollReveal],
+  imports: [SectionTitle, Icon, ScrollReveal],
   templateUrl: './testimonials.html',
   styleUrl: './testimonials.css',
 })
 export class Testimonials {
   readonly guarantees: Guarantee[] = [
     {
-      icon: '🔓',
+      icon: 'unlock',
       title: 'Sin permanencia',
       text: 'Cancela cuando quieras. Si tu agente no te ahorra tiempo desde el primer mes, no tiene sentido que sigas pagando.',
     },
     {
-      icon: '⚡',
+      icon: 'zap',
       title: 'Implementación rápida',
       text: 'Tu agente empieza a atender llamadas o mensajes en días, no en meses de reuniones.',
     },
     {
-      icon: '🎧',
+      icon: 'headset',
       title: 'Soporte directo',
       text: 'Hablas con el equipo que construye tu agente, no con un ticket automático que tarda una semana en responder.',
     },
     {
-      icon: '🎯',
+      icon: 'target',
       title: 'Pruébalo antes de decidir',
       text: 'Te enseñamos cómo suena y cómo responde tu propio agente, con tu caso real, antes de que firmes nada.',
     },

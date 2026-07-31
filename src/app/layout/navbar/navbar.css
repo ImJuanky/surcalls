@@ -81,9 +81,18 @@
   .navbar__link:hover {
     color: var(--color-text-primary);
   }
-  
+
   .navbar__link:hover::after {
     width: 100%;
+  }
+
+  .navbar__link--active {
+    color: var(--color-text-primary);
+  }
+
+  .navbar__link--active::after {
+    width: 100%;
+    background-color: var(--color-accent-primary);
   }
   
   .navbar__cta {
@@ -194,6 +203,21 @@
     font-weight: 600;
     color: var(--color-text-primary);
     text-decoration: none;
+  }
+
+  .navbar__mobile-link--active {
+    color: var(--color-accent-primary);
+  }
+
+  .navbar__toggle:focus-visible,
+  .navbar__link:focus-visible,
+  .navbar__cta:focus-visible,
+  .navbar__mobile-link:focus-visible,
+  .navbar__mobile-cta:focus-visible,
+  .navbar__logo:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
   
   .navbar__mobile-cta {

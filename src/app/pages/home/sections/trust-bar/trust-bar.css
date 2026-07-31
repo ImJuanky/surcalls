@@ -57,20 +57,23 @@
   align-items: center;
   gap: 9px;
   flex-shrink: 0;
-  opacity: 0.55;
-  filter: grayscale(1);
-  transition: opacity var(--transition-base), filter var(--transition-base), transform var(--transition-base);
+  opacity: 0.6;
+  transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
 .trust-bar__item:hover {
   opacity: 1;
-  filter: grayscale(0);
   transform: translateY(-1px);
 }
 
 .trust-bar__icon {
   font-size: 16px;
   line-height: 1;
+  color: var(--color-text-secondary);
+}
+
+.trust-bar__item:hover .trust-bar__icon {
+  color: var(--color-accent-primary);
 }
 
 .trust-bar__text {

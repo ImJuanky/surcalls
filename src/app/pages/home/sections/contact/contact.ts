@@ -2,13 +2,14 @@ import { Component, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { SectionTitle } from '../../../../shared/components/section-title/section-title';
 import { Button } from '../../../../shared/components/button/button';
+import { Icon } from '../../../../shared/components/icon/icon';
 import { ScrollReveal } from '../../../../shared/directives/scroll-reveal';
 import { ContactForm } from '../../../../core/services/contact-form';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule, SectionTitle, Button, ScrollReveal],
+  imports: [ReactiveFormsModule, SectionTitle, Button, Icon, ScrollReveal],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })

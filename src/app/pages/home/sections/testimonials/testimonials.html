@@ -1,6 +1,7 @@
 <section class="testimonials" id="testimonials">
   <div class="container">
     <app-section-title
+      size="sm"
       kicker="Por qué confiar en nosotros"
       title="Somos una empresa joven. Preferimos las garantías a los logos de encargo"
       description="No vamos a inventarte opiniones de clientes que no existen. Preferimos comprometernos con esto:"
@@ -8,9 +9,9 @@
 
     <div class="testimonials__grid">
       @for (item of guarantees; track item.title; let i = $index) {
-        <article class="testimonials__ticket" [appScrollReveal]="i * 80">
+        <article class="testimonials__ticket" [appScrollReveal]="i * 80" revealVariant="scale">
           <div class="testimonials__ticket-top">
-            <span class="testimonials__stamp">{{ item.icon }}</span>
+            <span class="testimonials__stamp"><app-icon [name]="item.icon"></app-icon></span>
             <span class="testimonials__ticket-label">Garantía Nº {{ (i + 1).toString().padStart(2, '0') }}</span>
           </div>
 

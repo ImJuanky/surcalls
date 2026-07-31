@@ -5,6 +5,7 @@
   <div class="container">
     <div class="contact__closing" appScrollReveal>
       <app-section-title
+        size="lg"
         kicker="Contacto"
         title="Hablemos de tu negocio, no de tecnología"
         description="Cuéntanos qué te está haciendo perder tiempo o clientes. En menos de 24 horas laborables te decimos cómo lo resolvemos y qué tardaría en estar activo."
@@ -16,14 +17,14 @@
         <span class="contact__intro-label">Habla directamente con nosotros</span>
         <ul class="contact__channels">
           <li class="contact__channel">
-            <span class="contact__channel-icon" aria-hidden="true">💬</span>
+            <span class="contact__channel-icon" aria-hidden="true"><app-icon name="message"></app-icon></span>
             <div>
               <span class="contact__channel-label">WhatsApp</span>
               <a class="contact__channel-value" href="https://wa.me/34625304333">+34 625 30 43 33</a>
             </div>
           </li>
           <li class="contact__channel">
-            <span class="contact__channel-icon" aria-hidden="true">✉️</span>
+            <span class="contact__channel-icon" aria-hidden="true"><app-icon name="mail"></app-icon></span>
             <div>
               <span class="contact__channel-label">Email</span>
               <a class="contact__channel-value" href="mailto:surcallshelp&#64;gmail.com">surcallshelp&#64;gmail.com</a>
@@ -35,7 +36,7 @@
       <form class="contact__form" appScrollReveal="160" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
         @if (submitted()) {
           <div class="contact__success" role="status">
-            <span aria-hidden="true">✓</span>
+            <app-icon name="check-circle" class="contact__success-icon"></app-icon>
             Mensaje recibido. Te responderemos en menos de 24 horas laborables.
           </div>
         } @else {

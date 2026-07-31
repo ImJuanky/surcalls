@@ -90,7 +90,8 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  font-size: 18px;
+  font-size: 17px;
+  color: var(--color-accent-primary);
   border-radius: 50%;
   border: 1px solid var(--hairline);
   flex-shrink: 0;
@@ -221,7 +222,7 @@
   font-weight: 500;
 }
 
-.contact__success span {
+.contact__success-icon {
   color: var(--color-accent-primary);
   font-size: 18px;
 }

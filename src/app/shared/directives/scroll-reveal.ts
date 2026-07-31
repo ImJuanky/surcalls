@@ -21,8 +21,23 @@ export class ScrollReveal implements OnInit, OnDestroy {
    *  atributo plano (appScrollReveal="120") en vez de binding ([appScrollReveal]="120"). */
   readonly delayMs = input<number | string>(0, { alias: 'appScrollReveal' });
 
+  /**
+   * Variante de entrada. Por defecto 'up' (fade + slide-up, el estándar de
+   * todo el sitio). Un puñado de secciones con personalidad propia usan
+   * una variante distinta para no repetir siempre el mismo gesto — ver
+   * ai-voice-agents (blur, entrada "enfoque"), use-cases (side, coherente
+   * con sus filas alternadas) y testimonials (scale, gesto de "sello").
+   */
+  readonly variant = input<'up' | 'side-left' | 'side-right' | 'scale' | 'blur'>('up', {
+    alias: 'revealVariant',
+  });
+
   ngOnInit(): void {
     const node = this.el.nativeElement;
+
+    if (this.variant() !== 'up') {
+      node.classList.add(`reveal--${this.variant()}`);
+    }
 
     if (typeof IntersectionObserver === 'undefined') {
       node.classList.add('is-visible');

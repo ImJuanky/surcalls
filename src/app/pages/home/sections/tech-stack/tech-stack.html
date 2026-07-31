@@ -1,6 +1,7 @@
 <section class="tech-stack" id="tech-stack">
   <div class="container">
     <app-section-title
+      size="sm"
       kicker="Integraciones"
       title="Se conecta con las herramientas que ya usas"
       description="No sustituimos tu forma de trabajar: la conectamos. Tu agente lee y escribe directamente en tus sistemas."
@@ -11,13 +12,13 @@
     <div class="marquee__track tech-stack__track">
       @for (item of integrations; track item.name) {
         <div class="tech-stack__item">
-          <span class="tech-stack__icon" aria-hidden="true">{{ item.icon }}</span>
+          <span class="tech-stack__icon" aria-hidden="true"><app-icon [name]="item.icon"></app-icon></span>
           <span class="tech-stack__name">{{ item.name }}</span>
         </div>
       }
       @for (item of integrations; track item.name + '-dup') {
         <div class="tech-stack__item" aria-hidden="true">
-          <span class="tech-stack__icon">{{ item.icon }}</span>
+          <span class="tech-stack__icon"><app-icon [name]="item.icon"></app-icon></span>
           <span class="tech-stack__name">{{ item.name }}</span>
         </div>
       }

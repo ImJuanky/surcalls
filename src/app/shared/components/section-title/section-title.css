@@ -40,3 +40,49 @@
   color: var(--color-text-secondary);
   margin-top: 20px;
 }
+
+/* ---------- Variantes de escala: refuerzan el peso narrativo de cada
+   sección en vez de repetir siempre 32/40px. ---------- */
+
+.section-title--sm .section-title__title {
+  font-size: 26px;
+  letter-spacing: -0.005em;
+}
+
+@media (min-width: 768px) {
+  .section-title--sm .section-title__title {
+    font-size: 30px;
+  }
+}
+
+.section-title--lg .section-title__title {
+  font-size: 34px;
+  letter-spacing: -0.015em;
+}
+
+@media (min-width: 768px) {
+  .section-title--lg .section-title__title {
+    font-size: 46px;
+  }
+}
+
+.section-title--xl .section-title__title {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .section-title--xl .section-title__title {
+    font-size: 54px;
+  }
+}
+
+.section-title--sm .section-title__description {
+  font-size: 15px;
+}
+
+.section-title--lg .section-title__description,
+.section-title--xl .section-title__description {
+  font-size: 17px;
+}

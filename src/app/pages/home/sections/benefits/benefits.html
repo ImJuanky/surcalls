@@ -6,14 +6,93 @@
       description="Estas son las razones por las que las empresas automatizan su atención con nosotros."
     ></app-section-title>
 
-    <div class="benefits__grid">
-      @for (item of benefits; track item.title; let i = $index) {
-        <div class="benefits__cell" [class.benefits__cell--featured]="i === 0" [appScrollReveal]="i * 70">
-          <app-card [icon]="item.icon" [title]="item.title">
-            {{ item.text }}
-          </app-card>
+    <div class="benefits__carousel" appScrollReveal>
+      <div class="benefits__carousel-bar">
+        <span class="benefits__carousel-count">
+          <span class="benefits__carousel-count-active">{{ (activeIndex() + 1).toString().padStart(2, '0') }}</span>
+          / {{ benefits.length.toString().padStart(2, '0') }}
+        </span>
+
+        <div class="benefits__arrows">
+          <button
+            type="button"
+            class="benefits__arrow"
+            (click)="prev()"
+            [disabled]="activeIndex() === 0"
+            aria-label="Beneficio anterior"
+          >
+            <app-icon name="chevron-left"></app-icon>
+          </button>
+          <button
+            type="button"
+            class="benefits__arrow"
+            (click)="next()"
+            [disabled]="activeIndex() === benefits.length - 1"
+            aria-label="Beneficio siguiente"
+          >
+            <app-icon name="chevron-right"></app-icon>
+          </button>
         </div>
-      }
+      </div>
+
+      <div
+        #track
+        class="benefits__track"
+        role="region"
+        aria-roledescription="carrusel"
+        aria-label="Beneficios de SurCalls"
+        tabindex="0"
+        (scroll)="onScroll()"
+        (wheel)="onWheel($event)"
+        (pointerdown)="onPointerDown($event)"
+        (pointermove)="onPointerMove($event)"
+        (pointerup)="onPointerUp()"
+        (pointercancel)="onPointerUp()"
+        (keydown.arrowleft)="prev()"
+        (keydown.arrowright)="next()"
+      >
+        <span class="benefits__edge" aria-hidden="true" [style.width.px]="edgeSpacerPx()"></span>
+
+        @for (item of benefits; track item.title; let i = $index) {
+          <article
+            #cardEl
+            class="benefits__card"
+            [class.benefits__card--active]="i === activeIndex()"
+            role="group"
+            aria-roledescription="slide"
+            [attr.aria-current]="i === activeIndex() ? 'true' : null"
+            [attr.aria-label]="(i + 1) + ' de ' + benefits.length + ': ' + item.title + '. ' + item.text"
+            (pointermove)="onCardPointerMove($event)"
+            (pointerleave)="onCardPointerLeave($event)"
+          >
+            <span class="benefits__card-index ghost-index" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+            <span class="benefits__card-glow" aria-hidden="true"></span>
+
+            <span class="benefits__card-icon">
+              <app-icon [name]="item.icon"></app-icon>
+            </span>
+
+            <h3 class="benefits__card-title">{{ item.title }}</h3>
+            <p class="benefits__card-text">{{ item.text }}</p>
+          </article>
+        }
+
+        <span class="benefits__edge" aria-hidden="true" [style.width.px]="edgeSpacerPx()"></span>
+      </div>
+
+      <div class="benefits__dots" role="tablist" aria-label="Selecciona un beneficio">
+        @for (item of benefits; track item.title; let i = $index) {
+          <button
+            type="button"
+            role="tab"
+            class="benefits__dot"
+            [class.benefits__dot--active]="i === activeIndex()"
+            [attr.aria-selected]="i === activeIndex()"
+            [attr.aria-label]="'Ir a ' + item.title"
+            (click)="goTo(i)"
+          ></button>
+        }
+      </div>
     </div>
 
     <div class="benefits__stats" appScrollReveal>

@@ -16,4 +16,11 @@ export class SectionTitle {
   readonly title = input.required<string>();
   readonly description = input<string>('');
   readonly align = input<'center' | 'left'>('center');
+  /**
+   * Peso tipográfico relativo de la sección dentro del relato de la página.
+   * Evita que las 8 secciones que usan este componente se lean todas con
+   * la misma escala (32/40px) — el tamaño refuerza qué secciones son el
+   * clímax narrativo (xl/lg) y cuáles son de apoyo (sm).
+   */
+  readonly size = input<'sm' | 'md' | 'lg' | 'xl'>('md');
 }
