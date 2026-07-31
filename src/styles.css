@@ -1,32 +1,138 @@
 :root {
-    --color-bg: #0A0E17;
-    --color-surface: #121724;
-    --color-accent-primary: #00E5A0;
-    --color-accent-secondary: #5B8CFF;
-    --color-text-primary: #F5F7FA;
-    --color-text-secondary: #8B93A7;
-  
-    --font-heading: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  /* Color — sistema existente, no tocar (usado por hero/navbar/trust-bar/what-we-do) */
+  --color-bg: #0A0E17;
+  --color-surface: #121724;
+  --color-accent-primary: #00E5A0;
+  --color-accent-secondary: #5B8CFF;
+  --color-text-primary: #F5F7FA;
+  --color-text-secondary: #8B93A7;
+
+  /* Color — ampliación para las secciones nuevas */
+  --color-surface-2: #171D2C;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --color-text-tertiary: #5C6478;
+  --color-danger: #FF6B6B;
+  --color-success: var(--color-accent-primary);
+
+  /* Tipografía */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-padding: 24px;
+
+  /* Radios */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-pill: 100px;
+
+  /* Sombras */
+  --shadow-md: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --shadow-glow-accent: 0 8px 24px rgba(0, 229, 160, 0.3);
+
+  /* Movimiento */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.25s ease;
+  --transition-smooth: 0.4s var(--ease-out-expo);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
-  
-  body {
-    background-color: var(--color-bg);
-    color: var(--color-text-primary);
-    font-family: var(--font-body);
-    overflow-x: hidden;
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  
-  a {
-    color: inherit;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Accesibilidad: foco visible consistente en toda la web */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Utilidad de contenedor compartida por todas las secciones nuevas */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-inline: var(--container-padding);
+}
+
+/* Scroll reveal — usado por la directiva appScrollReveal */
+[appScrollReveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+[appScrollReveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [appScrollReveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
+}
+
+/* Scrollbar discreta (webkit) para tiras horizontales tipo trust-bar */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}

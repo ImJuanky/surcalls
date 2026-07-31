@@ -1,1 +1,45 @@
-<p>ai-voice-agents works!</p>
+<section class="ai-voice-agents" id="ai-voice-agents">
+  <div class="ai-voice-agents__glow" aria-hidden="true"></div>
+
+  <div class="container ai-voice-agents__container">
+    <div class="ai-voice-agents__content" appScrollReveal>
+      <app-section-title
+        align="left"
+        kicker="Agentes de voz con IA"
+        title="Un empleado que nunca cuelga, nunca se cansa y nunca pierde una llamada"
+        description="Tu agente de IA responde con voz natural, entiende el contexto de la conversación y actúa: agenda, filtra, informa y vende. Indistinguible de una persona real."
+      ></app-section-title>
+
+      <ul class="ai-voice-agents__list">
+        @for (item of capabilities; track item) {
+          <li class="ai-voice-agents__item">
+            <span class="ai-voice-agents__check" aria-hidden="true">✓</span>
+            <span>{{ item }}</span>
+          </li>
+        }
+      </ul>
+
+      <app-button variant="primary" href="#contact">Habla con un agente de IA</app-button>
+    </div>
+
+    <div class="ai-voice-agents__visual" appScrollReveal="120">
+      <div class="ai-voice-agents__card">
+        <div class="ai-voice-agents__card-header">
+          <span class="ai-voice-agents__status">
+            <span class="ai-voice-agents__dot"></span>
+            Llamada en curso
+          </span>
+          <span class="ai-voice-agents__timer">00:22</span>
+        </div>
+
+        <div class="ai-voice-agents__transcript">
+          @for (line of transcript; track $index) {
+            <p class="ai-voice-agents__line" [class.ai-voice-agents__line--agent]="line.from === 'agent'">
+              {{ line.text }}
+            </p>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

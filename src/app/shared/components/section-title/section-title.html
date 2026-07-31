@@ -1,1 +1,11 @@
-<p>section-title works!</p>
+<div class="section-title" [class.section-title--left]="align() === 'left'">
+  @if (kicker()) {
+    <span class="section-title__kicker">{{ kicker() }}</span>
+  }
+
+  <h2 class="section-title__title">{{ title() }}</h2>
+
+  @if (description()) {
+    <p class="section-title__description">{{ description() }}</p>
+  }
+</div>

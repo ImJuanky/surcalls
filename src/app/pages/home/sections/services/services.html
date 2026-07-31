@@ -1,1 +1,20 @@
-<p>services works!</p>
+<section class="services" id="services">
+  <div class="container">
+    <app-section-title
+      kicker="Servicios"
+      title="Todo lo que necesitas para automatizar tu negocio"
+      description="Seis soluciones de IA que trabajan juntas: atienden a tus clientes, venden por ti y liberan tiempo de tu equipo."
+    ></app-section-title>
+
+    <div class="services__grid">
+      @for (service of services; track service.title; let i = $index) {
+        <a class="services__link" [href]="service.anchor" [appScrollReveal]="i * 80">
+          <app-card [icon]="service.icon" [title]="service.title">
+            {{ service.text }}
+            <span class="services__cta">Más información <span class="services__arrow">→</span></span>
+          </app-card>
+        </a>
+      }
+    </div>
+  </div>
+</section>

@@ -1,1 +1,13 @@
-<p>card works!</p>
+<article class="card">
+  @if (icon()) {
+    <div class="card__icon" aria-hidden="true">{{ icon() }}</div>
+  }
+
+  @if (title()) {
+    <h3 class="card__title">{{ title() }}</h3>
+  }
+
+  <div class="card__body">
+    <ng-content></ng-content>
+  </div>
+</article>

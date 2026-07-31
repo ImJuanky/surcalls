@@ -1,1 +1,18 @@
-<p>tech-stack works!</p>
+<section class="tech-stack" id="tech-stack">
+  <div class="container">
+    <app-section-title
+      kicker="Integraciones"
+      title="Se conecta con las herramientas que ya usas"
+      description="No sustituimos tu forma de trabajar: la conectamos. Tu agente lee y escribe directamente en tus sistemas."
+    ></app-section-title>
+
+    <div class="tech-stack__grid" appScrollReveal>
+      @for (item of integrations; track item.name) {
+        <div class="tech-stack__item">
+          <span class="tech-stack__icon" aria-hidden="true">{{ item.icon }}</span>
+          <span class="tech-stack__name">{{ item.name }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,1 +1,19 @@
-<p>testimonials works!</p>
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <app-section-title
+      kicker="Por qué confiar en nosotros"
+      title="Somos una empresa joven. Preferimos las garantías a los logos de encargo"
+      description="No vamos a inventarte opiniones de clientes que no existen. Preferimos comprometernos con esto:"
+    ></app-section-title>
+
+    <div class="testimonials__grid">
+      @for (item of guarantees; track item.title; let i = $index) {
+        <div [appScrollReveal]="i * 80">
+          <app-card [icon]="item.icon" [title]="item.title">
+            {{ item.text }}
+          </app-card>
+        </div>
+      }
+    </div>
+  </div>
+</section>

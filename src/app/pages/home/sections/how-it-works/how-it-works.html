@@ -1,1 +1,19 @@
-<p>how-it-works works!</p>
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <app-section-title
+      kicker="Cómo funciona"
+      title="De la idea a un agente funcionando, en cuatro pasos"
+      description="Sin proyectos eternos ni implementaciones a ciegas. Así es el proceso con SURCALLS."
+    ></app-section-title>
+
+    <ol class="how-it-works__list">
+      @for (step of steps; track step.number; let i = $index) {
+        <li class="how-it-works__step" [appScrollReveal]="i * 100">
+          <span class="how-it-works__number">{{ step.number }}</span>
+          <h3 class="how-it-works__title">{{ step.title }}</h3>
+          <p class="how-it-works__text">{{ step.text }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

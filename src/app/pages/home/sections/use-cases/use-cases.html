@@ -1,1 +1,19 @@
-<p>use-cases works!</p>
+<section class="use-cases" id="use-cases">
+  <div class="container">
+    <app-section-title
+      kicker="Casos de uso"
+      title="Un problema distinto en cada sector. La misma solución de fondo"
+      description="SURCALLS se adapta al negocio, no al revés. Así ayuda cada sector."
+    ></app-section-title>
+
+    <div class="use-cases__grid">
+      @for (item of useCases; track item.sector; let i = $index) {
+        <div [appScrollReveal]="i * 80">
+          <app-card [icon]="item.icon" [title]="item.sector">
+            {{ item.text }}
+          </app-card>
+        </div>
+      }
+    </div>
+  </div>
+</section>

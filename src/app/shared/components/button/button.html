@@ -1,1 +1,21 @@
-<p>button works!</p>
+@if (href()) {
+  <a
+    [href]="href()"
+    class="btn"
+    [class]="'btn--' + variant()"
+    [class.btn--full]="fullWidth()"
+  >
+    <ng-content></ng-content>
+  </a>
+} @else {
+  <button
+    [type]="type()"
+    class="btn"
+    [class]="'btn--' + variant()"
+    [class.btn--full]="fullWidth()"
+    [disabled]="disabled()"
+    (click)="onClick($event)"
+  >
+    <ng-content></ng-content>
+  </button>
+}
