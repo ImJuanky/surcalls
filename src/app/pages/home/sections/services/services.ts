@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { SectionTitle } from '../../../../shared/components/section-title/section-title';
-import { Card } from '../../../../shared/components/card/card';
+import { Button } from '../../../../shared/components/button/button';
 import { ScrollReveal } from '../../../../shared/directives/scroll-reveal';
 
 interface Service {
@@ -13,7 +13,7 @@ interface Service {
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [SectionTitle, Card, ScrollReveal],
+  imports: [SectionTitle, Button, ScrollReveal],
   templateUrl: './services.html',
   styleUrl: './services.css',
 })
@@ -56,4 +56,14 @@ export class Services {
       anchor: '#contact',
     },
   ];
+
+  readonly activeIndex = signal(0);
+
+  get active(): Service {
+    return this.services[this.activeIndex()];
+  }
+
+  select(index: number): void {
+    this.activeIndex.set(index);
+  }
 }

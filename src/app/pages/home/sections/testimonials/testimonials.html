@@ -8,11 +8,19 @@
 
     <div class="testimonials__grid">
       @for (item of guarantees; track item.title; let i = $index) {
-        <div [appScrollReveal]="i * 80">
-          <app-card [icon]="item.icon" [title]="item.title">
-            {{ item.text }}
-          </app-card>
-        </div>
+        <article class="testimonials__ticket" [appScrollReveal]="i * 80">
+          <div class="testimonials__ticket-top">
+            <span class="testimonials__stamp">{{ item.icon }}</span>
+            <span class="testimonials__ticket-label">Garantía Nº {{ (i + 1).toString().padStart(2, '0') }}</span>
+          </div>
+
+          <span class="testimonials__perforation" aria-hidden="true"></span>
+
+          <div class="testimonials__ticket-bottom">
+            <h3 class="testimonials__ticket-title">{{ item.title }}</h3>
+            <p class="testimonials__ticket-text">{{ item.text }}</p>
+          </div>
+        </article>
       }
     </div>
   </div>

@@ -1,9 +1,7 @@
 /*
  * app.css — intencionadamente vacío.
  *
- * El componente raíz (App) solo renderiza <router-outlet>, así que
- * ningún selector definido aquí puede coincidir con nada del DOM.
- * Este archivo contenía ~600 líneas de un sistema de color antiguo
- * (dorado) que nunca se aplicaba: código muerto de un scaffold previo.
- * Los estilos globales viven en /src/styles.css.
+ * App renderiza <app-dot-grid> (fondo fijo global) y <router-outlet>.
+ * El componente DotGrid trae sus propios estilos encapsulados, así que
+ * no hace falta nada aquí. Los estilos globales viven en /src/styles.css.
  */

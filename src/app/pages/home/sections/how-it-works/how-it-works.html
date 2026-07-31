@@ -7,11 +7,15 @@
     ></app-section-title>
 
     <ol class="how-it-works__list">
+      <hr class="hairline how-it-works__connector" />
+
       @for (step of steps; track step.number; let i = $index) {
-        <li class="how-it-works__step" [appScrollReveal]="i * 100">
-          <span class="how-it-works__number">{{ step.number }}</span>
-          <h3 class="how-it-works__title">{{ step.title }}</h3>
-          <p class="how-it-works__text">{{ step.text }}</p>
+        <li class="how-it-works__step" [class.how-it-works__step--offset]="i % 2 === 1" [appScrollReveal]="i * 100">
+          <span class="how-it-works__number ghost-index">{{ step.number }}</span>
+          <div class="how-it-works__card">
+            <h3 class="how-it-works__title">{{ step.title }}</h3>
+            <p class="how-it-works__text">{{ step.text }}</p>
+          </div>
         </li>
       }
     </ol>

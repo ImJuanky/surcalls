@@ -8,7 +8,7 @@
 
     <div class="benefits__grid">
       @for (item of benefits; track item.title; let i = $index) {
-        <div [appScrollReveal]="i * 70">
+        <div class="benefits__cell" [class.benefits__cell--featured]="i === 0" [appScrollReveal]="i * 70">
           <app-card [icon]="item.icon" [title]="item.title">
             {{ item.text }}
           </app-card>
@@ -17,16 +17,21 @@
     </div>
 
     <div class="benefits__stats" appScrollReveal>
+      <span class="benefits__stats-corner benefits__stats-corner--tl" aria-hidden="true"></span>
+      <span class="benefits__stats-corner benefits__stats-corner--br" aria-hidden="true"></span>
+
       <div class="benefits__stat">
         <span class="benefits__stat-number">24/7</span>
         <span class="benefits__stat-label">Disponibilidad total, festivos incluidos</span>
       </div>
+      <hr class="hairline-v benefits__stat-divider" />
       <div class="benefits__stat">
         <span class="benefits__stat-number">
           <app-animated-counter [target]="100" suffix="%"></app-animated-counter>
         </span>
         <span class="benefits__stat-label">Llamadas contestadas: ninguna se pierde por falta de personal</span>
       </div>
+      <hr class="hairline-v benefits__stat-divider" />
       <div class="benefits__stat">
         <span class="benefits__stat-number">
           <app-animated-counter [target]="0"></app-animated-counter>

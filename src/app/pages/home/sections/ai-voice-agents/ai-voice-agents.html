@@ -10,10 +10,10 @@
         description="Tu agente de IA responde con voz natural, entiende el contexto de la conversación y actúa: agenda, filtra, informa y vende. Indistinguible de una persona real."
       ></app-section-title>
 
-      <ul class="ai-voice-agents__list">
-        @for (item of capabilities; track item) {
-          <li class="ai-voice-agents__item">
-            <span class="ai-voice-agents__check" aria-hidden="true">✓</span>
+      <ul class="ai-voice-agents__timeline">
+        @for (item of capabilities; track item; let i = $index) {
+          <li class="ai-voice-agents__item" [appScrollReveal]="i * 60">
+            <span class="ai-voice-agents__dot-marker" aria-hidden="true"></span>
             <span>{{ item }}</span>
           </li>
         }
@@ -23,6 +23,14 @@
     </div>
 
     <div class="ai-voice-agents__visual" appScrollReveal="120">
+      <div class="ai-voice-agents__ambient" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="ai-voice-agents__frame" aria-hidden="true"></div>
+
       <div class="ai-voice-agents__card">
         <div class="ai-voice-agents__card-header">
           <span class="ai-voice-agents__status">
@@ -33,8 +41,12 @@
         </div>
 
         <div class="ai-voice-agents__transcript">
-          @for (line of transcript; track $index) {
-            <p class="ai-voice-agents__line" [class.ai-voice-agents__line--agent]="line.from === 'agent'">
+          @for (line of transcript; track $index; let i = $index) {
+            <p
+              class="ai-voice-agents__line"
+              [class.ai-voice-agents__line--agent]="line.from === 'agent'"
+              [appScrollReveal]="200 + i * 260"
+            >
               {{ line.text }}
             </p>
           }

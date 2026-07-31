@@ -1,130 +1,137 @@
 <section class="contact" id="contact">
-  <div class="container contact__container">
-    <div class="contact__intro" appScrollReveal>
+  <div class="contact__vignette" aria-hidden="true"></div>
+  <span class="contact__ghost-glyph ghost-index" aria-hidden="true">((</span>
+
+  <div class="container">
+    <div class="contact__closing" appScrollReveal>
       <app-section-title
-        align="left"
         kicker="Contacto"
         title="Hablemos de tu negocio, no de tecnología"
         description="Cuéntanos qué te está haciendo perder tiempo o clientes. En menos de 24 horas laborables te decimos cómo lo resolvemos y qué tardaría en estar activo."
       ></app-section-title>
-
-      <ul class="contact__channels">
-        <li class="contact__channel">
-          <span class="contact__channel-icon" aria-hidden="true">💬</span>
-          <div>
-            <span class="contact__channel-label">WhatsApp</span>
-            <a class="contact__channel-value" href="https://wa.me/34625304333">+34 625 30 43 33</a>
-          </div>
-        </li>
-        <li class="contact__channel">
-          <span class="contact__channel-icon" aria-hidden="true">✉️</span>
-          <div>
-            <span class="contact__channel-label">Email</span>
-            <a class="contact__channel-value" href="mailto:surcallshelp&#64;gmail.com">surcallshelp&#64;gmail.com</a>
-          </div>
-        </li>
-      </ul>
     </div>
 
-    <form class="contact__form" appScrollReveal="120" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-      @if (submitted()) {
-        <div class="contact__success" role="status">
-          <span aria-hidden="true">✓</span>
-          Mensaje recibido. Te responderemos en menos de 24 horas laborables.
-        </div>
-      } @else {
-        <div class="contact__row">
+    <div class="contact__split">
+      <div class="contact__intro" appScrollReveal="80">
+        <span class="contact__intro-label">Habla directamente con nosotros</span>
+        <ul class="contact__channels">
+          <li class="contact__channel">
+            <span class="contact__channel-icon" aria-hidden="true">💬</span>
+            <div>
+              <span class="contact__channel-label">WhatsApp</span>
+              <a class="contact__channel-value" href="https://wa.me/34625304333">+34 625 30 43 33</a>
+            </div>
+          </li>
+          <li class="contact__channel">
+            <span class="contact__channel-icon" aria-hidden="true">✉️</span>
+            <div>
+              <span class="contact__channel-label">Email</span>
+              <a class="contact__channel-value" href="mailto:surcallshelp&#64;gmail.com">surcallshelp&#64;gmail.com</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact__form" appScrollReveal="160" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        @if (submitted()) {
+          <div class="contact__success" role="status">
+            <span aria-hidden="true">✓</span>
+            Mensaje recibido. Te responderemos en menos de 24 horas laborables.
+          </div>
+        } @else {
+          <div class="contact__row">
+            <div class="contact__field">
+              <label for="name">Nombre*</label>
+              <input
+                id="name"
+                type="text"
+                formControlName="name"
+                [attr.aria-invalid]="f.name.invalid && f.name.touched"
+                placeholder="Tu nombre"
+              />
+              @if (f.name.invalid && f.name.touched) {
+                <span class="contact__error">Escribe tu nombre.</span>
+              }
+            </div>
+
+            <div class="contact__field">
+              <label for="business">Empresa</label>
+              <input id="business" type="text" formControlName="business" placeholder="Nombre de tu negocio" />
+            </div>
+          </div>
+
+          <div class="contact__row">
+            <div class="contact__field">
+              <label for="phone">Teléfono*</label>
+              <input
+                id="phone"
+                type="tel"
+                formControlName="phone"
+                [attr.aria-invalid]="f.phone.invalid && f.phone.touched"
+                placeholder="+34 625 30 43 33"
+              />
+              @if (f.phone.invalid && f.phone.touched) {
+                <span class="contact__error">Introduce un teléfono válido.</span>
+              }
+            </div>
+
+            <div class="contact__field">
+              <label for="email">Email*</label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                [attr.aria-invalid]="f.email.invalid && f.email.touched"
+                placeholder="tu&#64;empresa.com"
+              />
+              @if (f.email.invalid && f.email.touched) {
+                <span class="contact__error">Introduce un email válido.</span>
+              }
+            </div>
+          </div>
+
           <div class="contact__field">
-            <label for="name">Nombre*</label>
-            <input
-              id="name"
-              type="text"
-              formControlName="name"
-              [attr.aria-invalid]="f.name.invalid && f.name.touched"
-              placeholder="Tu nombre"
-            />
-            @if (f.name.invalid && f.name.touched) {
-              <span class="contact__error">Escribe tu nombre.</span>
+            <label for="interest">¿Qué te interesa?*</label>
+            <select
+              id="interest"
+              formControlName="interest"
+              [attr.aria-invalid]="f.interest.invalid && f.interest.touched"
+            >
+              <option value="" disabled selected>Selecciona una opción</option>
+              @for (option of interests; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+            @if (f.interest.invalid && f.interest.touched) {
+              <span class="contact__error">Selecciona una opción.</span>
             }
           </div>
 
           <div class="contact__field">
-            <label for="business">Empresa</label>
-            <input id="business" type="text" formControlName="business" placeholder="Nombre de tu negocio" />
-          </div>
-        </div>
-
-        <div class="contact__row">
-          <div class="contact__field">
-            <label for="phone">Teléfono*</label>
-            <input
-              id="phone"
-              type="tel"
-              formControlName="phone"
-              [attr.aria-invalid]="f.phone.invalid && f.phone.touched"
-              placeholder="+34 625 30 43 33"
-            />
-            @if (f.phone.invalid && f.phone.touched) {
-              <span class="contact__error">Introduce un teléfono válido.</span>
+            <label for="message">Cuéntanos tu caso*</label>
+            <textarea
+              id="message"
+              rows="3"
+              formControlName="message"
+              [attr.aria-invalid]="f.message.invalid && f.message.touched"
+              placeholder="Ej: perdemos llamadas fuera de horario y no damos abasto con las reservas..."
+            ></textarea>
+            @if (f.message.invalid && f.message.touched) {
+              <span class="contact__error">Cuéntanos al menos un par de frases.</span>
             }
           </div>
 
-          <div class="contact__field">
-            <label for="email">Email*</label>
-            <input
-              id="email"
-              type="email"
-              formControlName="email"
-              [attr.aria-invalid]="f.email.invalid && f.email.touched"
-              placeholder="tu&#64;empresa.com"
-            />
-            @if (f.email.invalid && f.email.touched) {
-              <span class="contact__error">Introduce un email válido.</span>
-            }
-          </div>
-        </div>
-
-        <div class="contact__field">
-          <label for="interest">¿Qué te interesa?*</label>
-          <select
-            id="interest"
-            formControlName="interest"
-            [attr.aria-invalid]="f.interest.invalid && f.interest.touched"
-          >
-            <option value="" disabled selected>Selecciona una opción</option>
-            @for (option of interests; track option.value) {
-              <option [value]="option.value">{{ option.label }}</option>
-            }
-          </select>
-          @if (f.interest.invalid && f.interest.touched) {
-            <span class="contact__error">Selecciona una opción.</span>
+          @if (submitError()) {
+            <div class="contact__error contact__error--form" role="alert">
+              Algo ha fallado al enviar el formulario. Escríbenos por WhatsApp mientras lo revisamos.
+            </div>
           }
-        </div>
 
-        <div class="contact__field">
-          <label for="message">Cuéntanos tu caso*</label>
-          <textarea
-            id="message"
-            rows="4"
-            formControlName="message"
-            [attr.aria-invalid]="f.message.invalid && f.message.touched"
-            placeholder="Ej: perdemos llamadas fuera de horario y no damos abasto con las reservas..."
-          ></textarea>
-          @if (f.message.invalid && f.message.touched) {
-            <span class="contact__error">Cuéntanos al menos un par de frases.</span>
-          }
-        </div>
-
-        @if (submitError()) {
-          <div class="contact__error contact__error--form" role="alert">
-            Algo ha fallado al enviar el formulario. Escríbenos por WhatsApp mientras lo revisamos.
-          </div>
+          <app-button type="submit" variant="primary" [fullWidth]="true" [disabled]="isSubmitting()">
+            {{ isSubmitting() ? 'Enviando…' : 'Solicitar una demo' }}
+          </app-button>
         }
-
-        <app-button type="submit" variant="primary" [fullWidth]="true" [disabled]="isSubmitting()">
-          {{ isSubmitting() ? 'Enviando…' : 'Solicitar una demo' }}
-        </app-button>
-      }
-    </form>
+      </form>
+    </div>
   </div>
 </section>

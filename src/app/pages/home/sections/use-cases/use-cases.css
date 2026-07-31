@@ -1,22 +1,98 @@
 .use-cases {
-  padding: 100px 24px;
-  border-top: 1px solid var(--color-border);
+  padding: 140px 24px;
+  border-top: 1px solid var(--hairline-soft);
 }
 
-.use-cases__grid {
+.use-cases__rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.use-cases__row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 20px;
+  align-items: center;
+  padding: 44px 0;
+  border-top: 1px solid var(--hairline-soft);
+  transition: padding-left var(--transition-smooth), padding-right var(--transition-smooth);
 }
 
-@media (min-width: 640px) {
-  .use-cases__grid {
-    grid-template-columns: repeat(2, 1fr);
+.use-cases__rows > .use-cases__row:last-child {
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+@media (min-width: 768px) {
+  .use-cases__row {
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+  }
+
+  .use-cases__row--reverse {
+    grid-template-columns: 1fr 200px;
+  }
+
+  .use-cases__row--reverse .use-cases__row-icon {
+    order: 2;
+  }
+
+  .use-cases__row:hover {
+    padding-left: 12px;
+  }
+
+  .use-cases__row--reverse:hover {
+    padding-left: 0;
+    padding-right: 12px;
   }
 }
 
-@media (min-width: 1024px) {
-  .use-cases__grid {
-    grid-template-columns: repeat(3, 1fr);
+.use-cases__row-icon {
+  font-size: 96px;
+  line-height: 1;
+  opacity: 0.5;
+  filter: grayscale(0.4);
+  transition: opacity var(--transition-base), filter var(--transition-base), transform var(--transition-smooth);
+}
+
+.use-cases__row:hover .use-cases__row-icon {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+  .use-cases__row-icon {
+    font-size: 48px;
+  }
+}
+
+.use-cases__row-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 10px;
+}
+
+.use-cases__row-text {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 58ch;
+}
+
+.use-cases__row--reverse .use-cases__row-body {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .use-cases__row--reverse .use-cases__row-body {
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .use-cases__row--reverse .use-cases__row-text {
+    margin-left: auto;
   }
 }

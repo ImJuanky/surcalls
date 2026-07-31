@@ -6,13 +6,15 @@
       description="SURCALLS se adapta al negocio, no al revés. Así ayuda cada sector."
     ></app-section-title>
 
-    <div class="use-cases__grid">
+    <div class="use-cases__rows">
       @for (item of useCases; track item.sector; let i = $index) {
-        <div [appScrollReveal]="i * 80">
-          <app-card [icon]="item.icon" [title]="item.sector">
-            {{ item.text }}
-          </app-card>
-        </div>
+        <article class="use-cases__row" [class.use-cases__row--reverse]="i % 2 === 1" appScrollReveal>
+          <span class="use-cases__row-icon" aria-hidden="true">{{ item.icon }}</span>
+          <div class="use-cases__row-body">
+            <h3 class="use-cases__row-title">{{ item.sector }}</h3>
+            <p class="use-cases__row-text">{{ item.text }}</p>
+          </div>
+        </article>
       }
     </div>
   </div>

@@ -1,44 +1,54 @@
 .tech-stack {
-  padding: 100px 24px;
-  border-top: 1px solid var(--color-border);
+  padding: 140px 0;
+  border-top: 1px solid var(--hairline-soft);
+  overflow: hidden;
 }
 
-.tech-stack__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.tech-stack .container {
+  padding-inline: var(--container-padding);
+}
+
+/* ---------- Cinta continua (rompe el contenedor: full-bleed) ---------- */
+
+.tech-stack__marquee {
+  position: relative;
+  width: 100%;
+  margin-top: 64px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.tech-stack__track {
+  display: flex;
+  align-items: center;
   gap: 16px;
+  width: max-content;
+  animation: marquee 32s linear infinite;
 }
 
-@media (min-width: 640px) {
-  .tech-stack__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .tech-stack__grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
+.tech-stack__marquee:hover .tech-stack__track {
+  animation-play-state: paused;
 }
 
 .tech-stack__item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 18px 20px;
+  padding: 16px 24px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  transition: border-color var(--transition-base), transform var(--transition-base);
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  transition: border-color var(--transition-base);
 }
 
 .tech-stack__item:hover {
   border-color: rgba(0, 229, 160, 0.3);
-  transform: translateY(-2px);
 }
 
 .tech-stack__icon {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1;
 }
 

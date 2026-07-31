@@ -1,33 +1,87 @@
 .contact {
-  padding: 100px 24px;
-  border-top: 1px solid var(--color-border);
+  position: relative;
+  padding: 160px 24px 120px;
+  overflow: hidden;
+  border-top: 1px solid var(--hairline-soft);
 }
 
-.contact__container {
+/* Nota: sin background-color propio a propósito, para dejar ver el
+   fondo de puntos global (app-dot-grid) también en esta sección. */
+.contact__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(900px 500px at 50% 0%, rgba(0, 229, 160, 0.08), transparent 70%),
+    radial-gradient(1200px 700px at 50% 100%, rgba(6, 8, 16, 0.9), transparent 70%);
+}
+
+.contact__ghost-glyph {
+  position: absolute;
+  bottom: -4%;
+  left: -2%;
+  font-size: clamp(8rem, 20vw, 18rem);
+  transform: scaleY(1.4) scaleX(-1);
+  z-index: 0;
+  opacity: 0.4;
+}
+
+@media (max-width: 1023px) {
+  .contact__ghost-glyph {
+    display: none;
+  }
+}
+
+.contact .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Cierre: declaración grande y centrada, como el final de una presentación ---------- */
+
+.contact__closing {
+  max-width: 720px;
+  margin: 0 auto 80px;
+}
+
+.contact__split {
   display: grid;
   grid-template-columns: 1fr;
   gap: 48px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-@media (min-width: 1024px) {
-  .contact__container {
-    grid-template-columns: 0.9fr 1.1fr;
-    align-items: start;
+@media (min-width: 900px) {
+  .contact__split {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 72px;
+    align-items: center;
   }
+}
+
+.contact__intro-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 24px;
 }
 
 .contact__channels {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 40px;
+  gap: 28px;
 }
 
 .contact__channel {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .contact__channel-icon {
@@ -37,9 +91,8 @@
   width: 44px;
   height: 44px;
   font-size: 18px;
-  border-radius: 12px;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
   flex-shrink: 0;
 }
 
@@ -47,11 +100,11 @@
   display: block;
   font-size: 12.5px;
   color: var(--color-text-tertiary);
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .contact__channel-value {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--color-text-primary);
   text-decoration: none;
@@ -62,22 +115,18 @@
   color: var(--color-accent-primary);
 }
 
-/* ---------- Formulario ---------- */
+/* ---------- Formulario: estilo underline, sin cajas ---------- */
 
 .contact__form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 36px;
+  gap: 28px;
 }
 
 .contact__row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 28px;
 }
 
 @media (min-width: 560px) {
@@ -89,27 +138,44 @@
 .contact__field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .contact__field label {
-  font-size: 13.5px;
+  font-size: 12.5px;
   font-weight: 600;
-  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+  color: var(--color-text-tertiary);
 }
 
 .contact__field input,
 .contact__field select,
 .contact__field textarea {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   color: var(--color-text-primary);
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  padding: 8px 2px 12px;
   transition: border-color var(--transition-base);
   resize: vertical;
+}
+
+.contact__field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--color-text-tertiary) 50%),
+    linear-gradient(135deg, var(--color-text-tertiary) 50%, transparent 50%);
+  background-position: right 6px top 55%, right 0px top 55%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.contact__field select option {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
 }
 
 .contact__field input::placeholder,

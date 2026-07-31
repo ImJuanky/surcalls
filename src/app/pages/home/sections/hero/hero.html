@@ -1,70 +1,130 @@
 <section class="hero" id="hero">
-    <div class="hero__glow"></div>
-  
-    <div class="hero__container">
-  
-      <div class="hero__content">
-        <span class="hero__badge">
-          <span class="hero__badge-dot"></span>
-          Agentes de IA disponibles 24/7
-        </span>
-  
-        <h1 class="hero__title">
-          Automatiza tus llamadas con
-          <span class="hero__title-accent">Inteligencia Artificial</span>
-        </h1>
-  
-        <p class="hero__subtitle">
-          Agentes de voz con IA que atienden a tus clientes, gestionan citas y responden
-          preguntas las 24 horas del día. Sin esperas, sin llamadas perdidas, sin coste de personal extra.
-        </p>
-  
-        <div class="hero__actions">
-          <a href="#contact" class="hero__cta-primary">Solicita una demo</a>
-          <a href="#ai-voice-agents" class="hero__cta-secondary">
-            Ver cómo funciona
-            <span class="hero__cta-arrow">→</span>
-          </a>
+  <div class="hero__mesh" aria-hidden="true"></div>
+
+  <div class="hero__container">
+
+    <div class="hero__content">
+      <span class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Agentes de IA disponibles 24/7
+      </span>
+
+      <h1 class="hero__title">
+        Nunca vuelvas a
+        <span class="hero__title-accent">perder una llamada</span>
+      </h1>
+
+      <p class="hero__subtitle">
+        Agentes de voz con IA que responden llamadas, cualifican clientes y agendan
+        reuniones automáticamente.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#contact" class="hero__cta-primary">Solicitar demo</a>
+        <a href="#ai-voice-agents" class="hero__cta-secondary">
+          Ver una llamada en acción
+          <span class="hero__cta-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-number">24/7</span>
+          <span class="hero__stat-label">Atención continua</span>
         </div>
-  
-        <div class="hero__stats">
-          <div class="hero__stat">
-            <span class="hero__stat-number">24/7</span>
-            <span class="hero__stat-label">Atención continua</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-number">+95%</span>
-            <span class="hero__stat-label">Llamadas resueltas</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-number">0</span>
-            <span class="hero__stat-label">Esperas para el cliente</span>
-          </div>
+        <hr class="hairline-v hero__stat-divider" />
+        <div class="hero__stat">
+          <span class="hero__stat-number">+95%</span>
+          <span class="hero__stat-label">Llamadas resueltas</span>
+        </div>
+        <hr class="hairline-v hero__stat-divider" />
+        <div class="hero__stat">
+          <span class="hero__stat-number">0</span>
+          <span class="hero__stat-label">Esperas para el cliente</span>
         </div>
       </div>
-  
-      <div class="hero__visual">
-        <div class="hero__call-card">
-          <div class="hero__call-header">
-            <span class="hero__call-status">
-              <span class="hero__call-dot"></span>
-              Llamada en curso
-            </span>
-            <span class="hero__call-timer">00:14</span>
-          </div>
-  
-          <div class="hero__waveform">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-  
-          <div class="hero__call-transcript">
-            <p class="hero__call-line hero__call-line--agent">
-              "Claro, tengo disponibilidad el jueves a las 17:00. ¿Le viene bien?"
-            </p>
-          </div>
-        </div>
-      </div>
-  
     </div>
-  </section>
+
+    <!-- ---------- Demostración visual del producto ---------- -->
+    <div class="hero__visual">
+
+      <div class="hero__signal-rings" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="hero__particles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="hero__mockup">
+
+        <div class="hero__mockup-chrome">
+          <span class="hero__mockup-dot"></span>
+          <span class="hero__mockup-dot"></span>
+          <span class="hero__mockup-dot"></span>
+        </div>
+
+        <div class="hero__mockup-header">
+          <div class="hero__mockup-agent">
+            <span class="hero__mockup-avatar">
+              <span></span><span></span><span></span>
+            </span>
+            <div>
+              <span class="hero__mockup-agent-name">Agente SurCalls</span>
+              <span class="hero__mockup-status">
+                <span class="hero__mockup-status-dot"></span>
+                Llamada en curso
+              </span>
+            </div>
+          </div>
+          <span class="hero__mockup-timer">00:24</span>
+        </div>
+
+        <div class="hero__mockup-waveform" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="hero__mockup-transcript">
+          <p class="hero__mockup-line" appScrollReveal="200">
+            "Hola, quería preguntar si tenéis hueco este jueves por la tarde."
+          </p>
+          <p class="hero__mockup-line hero__mockup-line--agent" appScrollReveal="500">
+            "Claro, tengo disponibilidad a las 17:00. ¿Le viene bien?"
+          </p>
+          <p class="hero__mockup-line" appScrollReveal="800">
+            "Perfecto, a las 17:00 está bien."
+          </p>
+        </div>
+
+        <div class="hero__mockup-outcomes" appScrollReveal="1100">
+          <span class="hero__mockup-outcome">
+            <span class="hero__mockup-outcome-icon" aria-hidden="true">📅</span>
+            Cita confirmada · Jueves 17:00
+          </span>
+          <span class="hero__mockup-outcome hero__mockup-outcome--accent">
+            <span class="hero__mockup-outcome-icon" aria-hidden="true">✓</span>
+            Cliente cualificado
+          </span>
+        </div>
+      </div>
+
+      <div class="hero__float hero__float--top" appScrollReveal="600">
+        <span class="hero__float-dot"></span>
+        Respuesta en &lt;1s
+      </div>
+
+      <div class="hero__float hero__float--bottom" appScrollReveal="900">
+        <span class="hero__mockup-avatar hero__mockup-avatar--sm">
+          <span></span><span></span><span></span>
+        </span>
+        Voz natural con IA
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="hairline hero__bottom-line" />
+</section>

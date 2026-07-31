@@ -1,98 +1,124 @@
 .what-we-do {
-    padding: 100px 24px;
-  }
-  
+  padding: 140px 24px;
+}
+
+.what-we-do__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+}
+
+@media (min-width: 900px) {
   .what-we-do__container {
-    max-width: 1280px;
-    margin: 0 auto;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 80px;
+    align-items: start;
   }
-  
-  .what-we-do__header {
-    max-width: 640px;
-    margin: 0 auto 64px;
-    text-align: center;
+}
+
+/* ---------- Columna editorial ---------- */
+
+.what-we-do__intro {
+  position: sticky;
+  top: 120px;
+}
+
+.what-we-do__kicker {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  margin-bottom: 20px;
+}
+
+.what-we-do__title {
+  font-family: var(--font-heading);
+  font-size: var(--display-lg);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin-bottom: 24px;
+  max-width: 12ch;
+}
+
+.what-we-do__description {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 40ch;
+}
+
+@media (max-width: 899px) {
+  .what-we-do__intro {
+    position: static;
   }
-  
-  .what-we-do__kicker {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-accent-primary);
-    margin-bottom: 16px;
-  }
-  
-  .what-we-do__title {
-    font-family: var(--font-heading);
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    color: var(--color-text-primary);
-    margin-bottom: 20px;
-  }
-  
-  @media (min-width: 768px) {
-    .what-we-do__title {
-      font-size: 40px;
-    }
-  }
-  
-  .what-we-do__description {
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--color-text-secondary);
-  }
-  
-  .what-we-do__grid {
-    display: grid;
+}
+
+/* ---------- Lista editorial (sustituye al grid de tarjetas) ---------- */
+
+.what-we-do__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.what-we-do__row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 36px 0;
+  border-top: 1px solid var(--hairline-soft);
+  transition: padding-left var(--transition-smooth);
+}
+
+.what-we-do__row:last-child {
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.what-we-do__row:hover {
+  padding-left: 12px;
+}
+
+.what-we-do__index {
+  font-size: 44px;
+  transition: color var(--transition-base), -webkit-text-stroke-color var(--transition-base);
+}
+
+.what-we-do__row:hover .what-we-do__index {
+  -webkit-text-stroke-color: var(--color-accent-primary);
+}
+
+.what-we-do__row-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.what-we-do__row-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 52ch;
+}
+
+@media (max-width: 560px) {
+  .what-we-do__row {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 12px;
   }
-  
-  @media (min-width: 768px) {
-    .what-we-do__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+
+  .what-we-do__index {
+    font-size: 32px;
   }
-  
-  .what-we-do__card {
-    background-color: var(--color-surface);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
-    padding: 32px 28px;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .what-we-do__card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(0, 229, 160, 0.25);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  }
-  
-  .what-we-do__card-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    font-size: 22px;
-    border-radius: 12px;
-    background-color: rgba(0, 229, 160, 0.08);
-    margin-bottom: 20px;
-  }
-  
-  .what-we-do__card-title {
-    font-family: var(--font-heading);
-    font-size: 19px;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin-bottom: 12px;
-  }
-  
-  .what-we-do__card-text {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--color-text-secondary);
-  }
+}

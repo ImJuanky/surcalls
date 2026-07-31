@@ -1,13 +1,15 @@
 .how-it-works {
-  padding: 100px 24px;
-  border-top: 1px solid var(--color-border);
+  padding: 140px 24px 120px;
+  border-top: 1px solid var(--hairline-soft);
 }
 
 .how-it-works__list {
+  position: relative;
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 48px 24px;
+  padding-top: 8px;
 }
 
 @media (min-width: 768px) {
@@ -19,43 +21,55 @@
 @media (min-width: 1024px) {
   .how-it-works__list {
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 0 20px;
+  }
+}
+
+.how-it-works__connector {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .how-it-works__connector {
+    display: block;
+    position: absolute;
+    top: 46px;
+    left: 4%;
+    right: 4%;
+    z-index: 0;
   }
 }
 
 .how-it-works__step {
   position: relative;
-  padding: 32px 24px 28px;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .how-it-works__step--offset {
+    margin-top: 36px;
+  }
+}
+
+.how-it-works__number {
+  display: block;
+  font-size: 80px;
+  margin-bottom: -30px;
+  margin-left: -2px;
+}
+
+.how-it-works__card {
+  position: relative;
+  padding: 28px 24px 26px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   transition: transform var(--transition-smooth), border-color var(--transition-base);
 }
 
-.how-it-works__step:hover {
+.how-it-works__step:hover .how-it-works__card {
   transform: translateY(-4px);
   border-color: var(--color-border-strong);
-}
-
-@media (min-width: 1024px) {
-  .how-it-works__step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: 44px;
-    right: -20px;
-    width: 20px;
-    height: 1px;
-    background: linear-gradient(90deg, var(--color-border-strong), transparent);
-  }
-}
-
-.how-it-works__number {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--color-accent-primary);
-  margin-bottom: 20px;
 }
 
 .how-it-works__title {
@@ -70,4 +84,11 @@
   font-size: 14px;
   line-height: 1.6;
   color: var(--color-text-secondary);
+}
+
+@media (max-width: 1023px) {
+  .how-it-works__number {
+    font-size: 56px;
+    margin-bottom: -20px;
+  }
 }

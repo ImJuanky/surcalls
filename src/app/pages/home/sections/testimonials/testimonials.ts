@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { SectionTitle } from '../../../../shared/components/section-title/section-title';
-import { Card } from '../../../../shared/components/card/card';
 import { ScrollReveal } from '../../../../shared/directives/scroll-reveal';
 
 interface Guarantee {
@@ -25,7 +24,7 @@ interface Guarantee {
 @Component({
   selector: 'app-testimonials',
   standalone: true,
-  imports: [SectionTitle, Card, ScrollReveal],
+  imports: [SectionTitle, ScrollReveal],
   templateUrl: './testimonials.html',
   styleUrl: './testimonials.css',
 })

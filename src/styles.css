@@ -38,6 +38,12 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-base: 0.25s ease;
   --transition-smooth: 0.4s var(--ease-out-expo);
+
+  /* ---------- Sistema editorial (dirección de arte) ---------- */
+  --display-xl: clamp(3.2rem, 8vw, 7rem);
+  --display-lg: clamp(2.4rem, 6vw, 4.5rem);
+  --hairline: rgba(255, 255, 255, 0.1);
+  --hairline-soft: rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -135,4 +141,68 @@ select:focus-visible,
 
 ::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* ============================================================
+   SISTEMA EDITORIAL — utilidades compartidas de dirección de arte
+   ============================================================ */
+
+/* Grano fotográfico muy sutil sobre toda la web: rompe la planitud
+   digital de los degradados y da sensación de material, no de plantilla. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    display: none;
+  }
+}
+
+/* Numeral fantasma: solo contorno, para índices editoriales grandes
+   (01, 02...) que rompen la rejilla sin competir con el contenido real. */
+.ghost-index {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--hairline);
+  line-height: 1;
+  user-select: none;
+}
+
+/* Línea hairline decorativa (no borde estructural: se usa como elemento
+   gráfico propio, con degradado en los extremos para que no "corte" duro). */
+.hairline {
+  height: 1px;
+  border: none;
+  background: linear-gradient(90deg, transparent, var(--hairline) 15%, var(--hairline) 85%, transparent);
+}
+
+.hairline-v {
+  width: 1px;
+  border: none;
+  background: linear-gradient(180deg, transparent, var(--hairline) 15%, var(--hairline) 85%, transparent);
+}
+
+/* Cinta de desplazamiento continuo (tech-stack). */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none !important;
+  }
 }

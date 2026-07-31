@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { SectionTitle } from '../../../../shared/components/section-title/section-title';
-import { Card } from '../../../../shared/components/card/card';
 import { ScrollReveal } from '../../../../shared/directives/scroll-reveal';
 
 interface UseCase {
@@ -12,7 +11,7 @@ interface UseCase {
 @Component({
   selector: 'app-use-cases',
   standalone: true,
-  imports: [SectionTitle, Card, ScrollReveal],
+  imports: [SectionTitle, ScrollReveal],
   templateUrl: './use-cases.html',
   styleUrl: './use-cases.css',
 })
