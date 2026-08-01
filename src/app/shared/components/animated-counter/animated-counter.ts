@@ -81,6 +81,12 @@ export class AnimatedCounter implements OnInit, OnDestroy {
   }
 
   private setValue(value: number): void {
-    this.displayValue.set(value.toFixed(this.decimals()));
+    if (this.decimals() === 0) {
+      // Separador de miles (es-ES) para cifras grandes tipo "1.247" — con
+      // decimales, mejor un toFixed simple (evita redondeos raros de Intl).
+      this.displayValue.set(Math.round(value).toLocaleString('es-ES'));
+    } else {
+      this.displayValue.set(value.toFixed(this.decimals()));
+    }
   }
 }

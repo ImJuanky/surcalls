@@ -56,71 +56,144 @@
         <span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
 
-      <div class="hero__mockup">
+      <div class="hero__dashboard">
 
-        <div class="hero__mockup-chrome">
-          <span class="hero__mockup-dot"></span>
-          <span class="hero__mockup-dot"></span>
-          <span class="hero__mockup-dot"></span>
+        <div class="hero__dash-header">
+          <span class="hero__dash-title">SurCalls <span class="hero__dash-title-accent">Dashboard</span></span>
+          <span class="hero__dash-live">
+            <span class="hero__dash-live-dot"></span>
+            LIVE
+          </span>
         </div>
 
-        <div class="hero__mockup-header">
-          <div class="hero__mockup-agent">
-            <span class="hero__mockup-avatar">
+        <div class="hero__dash-kpis">
+          <div class="hero__dash-kpi">
+            <span class="hero__dash-kpi-label">Llamadas activas</span>
+            <span class="hero__dash-kpi-value">
+              <app-animated-counter [target]="24"></app-animated-counter>
+            </span>
+            <span class="hero__dash-kpi-delta">
+              <span class="hero__dash-kpi-arrow" aria-hidden="true"></span>
+              +12%
+            </span>
+          </div>
+
+          <div class="hero__dash-kpi">
+            <span class="hero__dash-kpi-label">Atendidas hoy</span>
+            <span class="hero__dash-kpi-value">
+              <app-animated-counter [target]="1247"></app-animated-counter>
+            </span>
+            <span class="hero__dash-kpi-delta">
+              <span class="hero__dash-kpi-arrow" aria-hidden="true"></span>
+              +23%
+            </span>
+          </div>
+
+          <div class="hero__dash-kpi">
+            <span class="hero__dash-kpi-label">Satisfacción</span>
+            <span class="hero__dash-kpi-value">
+              <app-animated-counter [target]="98.2" [decimals]="1" suffix="%"></app-animated-counter>
+            </span>
+            <span class="hero__dash-kpi-delta">
+              <span class="hero__dash-kpi-arrow" aria-hidden="true"></span>
+              +4%
+            </span>
+          </div>
+        </div>
+
+        <div class="hero__dash-chart" appScrollReveal="150">
+          <svg class="hero__dash-chart-svg" viewBox="0 0 460 150" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="heroDashChartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" style="stop-color: var(--color-accent-primary); stop-opacity: 0.28" />
+                <stop offset="100%" style="stop-color: var(--color-accent-primary); stop-opacity: 0" />
+              </linearGradient>
+            </defs>
+
+            <line x1="0" y1="20" x2="460" y2="20" class="hero__dash-chart-grid" />
+            <line x1="0" y1="70" x2="460" y2="70" class="hero__dash-chart-grid" />
+            <line x1="0" y1="120" x2="460" y2="120" class="hero__dash-chart-grid" />
+
+            <path
+              class="hero__dash-chart-area"
+              fill="url(#heroDashChartFill)"
+              d="M 10.0,108.0 C 19.2,105.2 46.7,97.9 65.0,91.5 C 83.3,85.1 101.7,77.4 120.0,69.5 C 138.3,61.6 156.7,51.0 175.0,44.2 C 193.3,37.4 211.7,29.2 230.0,28.8 C 248.3,28.4 266.7,37.0 285.0,42.0 C 303.3,47.0 321.7,53.0 340.0,58.5 C 358.3,64.0 376.7,70.0 395.0,75.0 C 413.3,80.0 440.8,86.0 450.0,88.2 L 450,140 L 10,140 Z"
+            />
+            <path
+              class="hero__dash-chart-line"
+              fill="none"
+              d="M 10.0,108.0 C 19.2,105.2 46.7,97.9 65.0,91.5 C 83.3,85.1 101.7,77.4 120.0,69.5 C 138.3,61.6 156.7,51.0 175.0,44.2 C 193.3,37.4 211.7,29.2 230.0,28.8 C 248.3,28.4 266.7,37.0 285.0,42.0 C 303.3,47.0 321.7,53.0 340.0,58.5 C 358.3,64.0 376.7,70.0 395.0,75.0 C 413.3,80.0 440.8,86.0 450.0,88.2"
+            />
+            <circle class="hero__dash-chart-dot" cx="450" cy="88.2" r="4.5" />
+          </svg>
+
+          <div class="hero__dash-chart-labels" aria-hidden="true">
+            <span>9h</span><span>10h</span><span>11h</span><span>12h</span><span>13h</span>
+            <span>14h</span><span>15h</span><span>16h</span><span>17h</span>
+          </div>
+        </div>
+
+        <ul class="hero__dash-agents">
+          <li class="hero__dash-agent">
+            <span class="hero__dash-agent-avatar hero__dash-agent-avatar--live">
               <span></span><span></span><span></span>
             </span>
-            <div>
-              <span class="hero__mockup-agent-name">Agente SurCalls</span>
-              <span class="hero__mockup-status">
-                <span class="hero__mockup-status-dot"></span>
-                Llamada en curso
+            <span class="hero__dash-agent-body">
+              <span class="hero__dash-agent-name">Agente Alfa</span>
+              <span class="hero__dash-agent-status hero__dash-agent-status--live">
+                <span class="hero__dash-agent-status-dot"></span>
+                En llamada
               </span>
-            </div>
-          </div>
-          <span class="hero__mockup-timer">00:24</span>
-        </div>
+            </span>
+            <span class="hero__dash-agent-duration">02:34</span>
+          </li>
 
-        <div class="hero__mockup-waveform" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
+          <li class="hero__dash-agent">
+            <span class="hero__dash-agent-avatar">
+              <span></span><span></span><span></span>
+            </span>
+            <span class="hero__dash-agent-body">
+              <span class="hero__dash-agent-name">Agente Beta</span>
+              <span class="hero__dash-agent-status">
+                <span class="hero__dash-agent-status-dot hero__dash-agent-status-dot--idle"></span>
+                Disponible
+              </span>
+            </span>
+          </li>
 
-        <div class="hero__mockup-transcript">
-          <p class="hero__mockup-line" appScrollReveal="200">
-            "Hola, quería preguntar si tenéis hueco este jueves por la tarde."
-          </p>
-          <p class="hero__mockup-line hero__mockup-line--agent" appScrollReveal="500">
-            "Claro, tengo disponibilidad a las 17:00. ¿Le viene bien?"
-          </p>
-          <p class="hero__mockup-line" appScrollReveal="800">
-            "Perfecto, a las 17:00 está bien."
-          </p>
-        </div>
-
-        <div class="hero__mockup-outcomes" appScrollReveal="1100">
-          <span class="hero__mockup-outcome">
-            <app-icon name="calendar" class="hero__mockup-outcome-icon"></app-icon>
-            Cita confirmada · Jueves 17:00
-          </span>
-          <span class="hero__mockup-outcome hero__mockup-outcome--accent">
-            <app-icon name="check-circle" class="hero__mockup-outcome-icon"></app-icon>
-            Cliente cualificado
-          </span>
-        </div>
+          <li class="hero__dash-agent">
+            <span class="hero__dash-agent-avatar hero__dash-agent-avatar--done">
+              <span></span><span></span><span></span>
+            </span>
+            <span class="hero__dash-agent-body">
+              <span class="hero__dash-agent-name">Agente Gamma</span>
+              <span class="hero__dash-agent-status">
+                <app-icon name="check-circle" class="hero__dash-agent-status-icon"></app-icon>
+                Finalizada
+              </span>
+            </span>
+          </li>
+        </ul>
       </div>
 
-      <div class="hero__float hero__float--top" appScrollReveal="600">
-        <span class="hero__float-dot"></span>
-        Respuesta en &lt;1s
+      <div class="hero__float hero__float--a" appScrollReveal="400">
+        <app-icon name="zap" class="hero__float-icon"></app-icon>
+        Respuesta &lt;1s
       </div>
 
-      <div class="hero__float hero__float--bottom" appScrollReveal="900">
-        <span class="hero__mockup-avatar hero__mockup-avatar--sm">
-          <span></span><span></span><span></span>
-        </span>
-        Voz natural con IA
+      <div class="hero__float hero__float--b" appScrollReveal="650">
+        <app-icon name="cpu" class="hero__float-icon"></app-icon>
+        IA gestiona el 94%
+      </div>
+
+      <div class="hero__float hero__float--c" appScrollReveal="900">
+        <app-icon name="trending-up" class="hero__float-icon"></app-icon>
+        +312 llamadas hoy
+      </div>
+
+      <div class="hero__float hero__float--d" appScrollReveal="1150">
+        <app-icon name="wallet" class="hero__float-icon"></app-icon>
+        Coste reducido 65%
       </div>
     </div>
 

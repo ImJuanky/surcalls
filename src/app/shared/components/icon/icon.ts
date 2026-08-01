@@ -33,7 +33,8 @@ export type IconName =
   | 'headset'
   | 'target'
   | 'chevron-left'
-  | 'chevron-right';
+  | 'chevron-right'
+  | 'cpu';
 
 /**
  * Set de iconos de trazo propio (SVG inline, sin dependencias externas).
