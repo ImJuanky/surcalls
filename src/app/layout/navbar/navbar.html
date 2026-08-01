@@ -3,24 +3,49 @@
 
       <!-- Logo -->
       <a href="#hero" class="navbar__logo" aria-label="SurCalls - Inicio">
-        <span class="navbar__logo-mark">Sur<span class="navbar__logo-accent">Calls</span></span>
+        <span
+          class="navbar__logo-mark"
+          (pointermove)="onLogoPointerMove($event)"
+          (pointerleave)="onLogoPointerLeave($event)"
+        >
+          <span class="navbar__logo-shadow" aria-hidden="true"></span>
+          <img class="navbar__logo-mark-img" src="logo-mark.png" alt="" width="149" height="92" />
+        </span>
+        <span class="navbar__logo-text">Sur<span class="navbar__logo-accent">Calls</span></span>
       </a>
 
       <!-- Navegación desktop -->
-      <nav class="navbar__links" aria-label="Navegación principal">
+      <nav
+        class="navbar__links"
+        aria-label="Navegación principal"
+        #linksNav
+        (mouseleave)="onNavLeave()"
+        (focusout)="onNavFocusOut($event)"
+      >
+        <span
+          class="navbar__pill"
+          aria-hidden="true"
+          [class.navbar__pill--visible]="pillReady()"
+          [style.transform]="'translateX(' + pillLeft() + 'px)'"
+          [style.width.px]="pillWidth()"
+        ></span>
+
         @for (item of navItems; track item.id) {
           <a
+            #navLink
             [href]="'#' + item.id"
             class="navbar__link"
             [class.navbar__link--active]="activeSection() === item.id"
             [attr.aria-current]="activeSection() === item.id ? 'true' : null"
+            (mouseenter)="onLinkHover(item.id)"
+            (focus)="onLinkHover(item.id)"
           >{{ item.label }}</a>
         }
       </nav>
 
       <!-- CTA desktop -->
       <a href="#contact" class="navbar__cta">
-        Solicita una demo
+        <span class="navbar__cta-text">Solicita una demo</span>
       </a>
 
       <!-- Botón hamburguesa (mobile) -->

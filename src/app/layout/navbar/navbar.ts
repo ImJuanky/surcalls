@@ -1,4 +1,14 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, ViewChild, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  signal,
+} from '@angular/core';
 
 interface NavItem {
   id: string;
@@ -15,6 +25,8 @@ interface NavItem {
 export class Navbar implements AfterViewInit, OnDestroy {
   @ViewChild('toggleBtn') private readonly toggleBtnRef?: ElementRef<HTMLButtonElement>;
   @ViewChild('mobileMenu') private readonly mobileMenuRef?: ElementRef<HTMLElement>;
+  @ViewChild('linksNav') private readonly linksNavRef?: ElementRef<HTMLElement>;
+  @ViewChildren('navLink') private readonly navLinkEls?: QueryList<ElementRef<HTMLAnchorElement>>;
 
   readonly navItems: NavItem[] = [
     { id: 'what-we-do', label: 'Qué hacemos' },
@@ -29,11 +41,24 @@ export class Navbar implements AfterViewInit, OnDestroy {
   /** Sección visible en el viewport, para resaltar el link correspondiente (scroll-spy). */
   readonly activeSection = signal<string>('');
 
+  /** Posición del indicador "pill" que se desliza tras el link activo/hover. */
+  readonly pillLeft = signal(0);
+  readonly pillWidth = signal(0);
+  readonly pillReady = signal(false);
+
   private observer?: IntersectionObserver;
+  private isHoveringNav = false;
 
   @HostListener('window:scroll')
   onWindowScroll(): void {
     this.isScrolled.set(window.scrollY > 40);
+  }
+
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    if (!this.isHoveringNav) {
+      this.updatePill(this.activeSection());
+    }
   }
 
   @HostListener('window:keydown.escape')
@@ -86,6 +111,9 @@ export class Navbar implements AfterViewInit, OnDestroy {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
         if (visible[0]) {
           this.activeSection.set(visible[0].target.id);
+          if (!this.isHoveringNav) {
+            this.updatePill(visible[0].target.id);
+          }
         }
       },
       // Franja centrada en el viewport: la sección "activa" es la que ocupa
@@ -94,6 +122,58 @@ export class Navbar implements AfterViewInit, OnDestroy {
     );
 
     sections.forEach((section) => this.observer!.observe(section));
+  }
+
+  // ---------- Indicador "pill" deslizante ----------
+
+  onLinkHover(id: string): void {
+    this.isHoveringNav = true;
+    this.updatePill(id);
+  }
+
+  onNavLeave(): void {
+    this.isHoveringNav = false;
+    this.updatePill(this.activeSection());
+  }
+
+  onNavFocusOut(event: FocusEvent): void {
+    const nav = this.linksNavRef?.nativeElement;
+    const next = event.relatedTarget as Node | null;
+    if (nav && (!next || !nav.contains(next))) {
+      this.onNavLeave();
+    }
+  }
+
+  private updatePill(id: string): void {
+    const nav = this.linksNavRef?.nativeElement;
+    const index = this.navItems.findIndex((item) => item.id === id);
+    const link = index >= 0 ? this.navLinkEls?.get(index)?.nativeElement : undefined;
+    if (!nav || !link) {
+      this.pillReady.set(false);
+      return;
+    }
+    const navRect = nav.getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+    this.pillLeft.set(linkRect.left - navRect.left);
+    this.pillWidth.set(linkRect.width);
+    this.pillReady.set(true);
+  }
+
+  // ---------- Tilt 3D del logomark (sigue al cursor) ----------
+
+  onLogoPointerMove(event: PointerEvent): void {
+    const el = event.currentTarget as HTMLElement;
+    const rect = el.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+    el.style.setProperty('--logo-tilt-x', `${(0.5 - y) * 16}`);
+    el.style.setProperty('--logo-tilt-y', `${(x - 0.5) * 16}`);
+  }
+
+  onLogoPointerLeave(event: PointerEvent): void {
+    const el = event.currentTarget as HTMLElement;
+    el.style.setProperty('--logo-tilt-x', '0');
+    el.style.setProperty('--logo-tilt-y', '0');
   }
 
   ngOnDestroy(): void {

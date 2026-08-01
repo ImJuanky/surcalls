@@ -14,7 +14,20 @@
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
     box-shadow: 0 1px 0 var(--hairline-soft);
-    border-bottom: 1px solid var(--hairline-soft);
+  }
+
+  /* Línea inferior con degradado (se desvanece en los extremos) en vez de
+     un border-bottom sólido de un píxel — el mismo lenguaje visual que
+     .hairline en el resto del sitio, no un navbar de plantilla genérico. */
+  .navbar--scrolled::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 160, 0.35) 20%, rgba(0, 229, 160, 0.35) 80%, transparent);
+    opacity: 0.6;
   }
   
   .navbar__container {
@@ -31,72 +44,157 @@
     text-decoration: none;
     display: flex;
     align-items: center;
+    gap: 10px;
   }
-  
+
+  /* ---------- Logomark: flota permanentemente y responde en 3D al cursor ---------- */
+
   .navbar__logo-mark {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    perspective: 380px;
+  }
+
+  .navbar__logo-mark-img {
+    position: relative;
+    z-index: 1;
+    width: 34px;
+    height: auto;
+    display: block;
+    transform-style: preserve-3d;
+    animation: logo-float 4.5s ease-in-out infinite;
+    transition: filter 0.3s ease;
+    will-change: transform;
+  }
+
+  .navbar__logo:hover .navbar__logo-mark-img {
+    filter: drop-shadow(0 6px 14px rgba(0, 229, 160, 0.5));
+  }
+
+  .navbar__logo-shadow {
+    position: absolute;
+    z-index: 0;
+    bottom: 1px;
+    left: 50%;
+    width: 22px;
+    height: 5px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6), transparent 72%);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: logo-shadow-pulse 4.5s ease-in-out infinite;
+  }
+
+  @keyframes logo-float {
+    0%,
+    100% {
+      transform: translateY(0) rotateX(calc(var(--logo-tilt-x, 0) * 1deg)) rotateY(calc(var(--logo-tilt-y, 0) * 1deg));
+    }
+    50% {
+      transform: translateY(-5px) rotateX(calc(var(--logo-tilt-x, 0) * 1deg)) rotateY(calc(var(--logo-tilt-y, 0) * 1deg));
+    }
+  }
+
+  @keyframes logo-shadow-pulse {
+    0%,
+    100% {
+      transform: translateX(-50%) scale(1);
+      opacity: 0.55;
+    }
+    50% {
+      transform: translateX(-50%) scale(0.65);
+      opacity: 0.25;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar__logo-mark-img,
+    .navbar__logo-shadow {
+      animation: none;
+    }
+  }
+
+  .navbar__logo-text {
     font-family: var(--font-heading);
     font-size: 22px;
     font-weight: 700;
     color: var(--color-text-primary);
     letter-spacing: -0.02em;
   }
-  
+
   .navbar__logo-accent {
     color: var(--color-accent-primary);
   }
   
   .navbar__links {
+    position: relative;
     display: none;
     align-items: center;
-    gap: 36px;
+    gap: 2px;
   }
-  
+
   @media (min-width: 1024px) {
     .navbar__links {
       display: flex;
     }
   }
-  
+
+  /* Indicador "pill" que se mide del DOM real (posición/ancho del link) y
+     se desliza tras el cursor, con el link de la sección activa como
+     posición de reposo cuando el ratón no está sobre la navegación. */
+  .navbar__pill {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 0;
+    height: 32px;
+    margin-top: -16px;
+    background: linear-gradient(155deg, rgba(0, 229, 160, 0.14), rgba(0, 229, 160, 0.04));
+    border: 1px solid rgba(0, 229, 160, 0.22);
+    border-radius: var(--radius-pill);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.4s var(--ease-out-expo), width 0.4s var(--ease-out-expo), opacity 0.3s ease;
+  }
+
+  .navbar__pill--visible {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar__pill {
+      transition: opacity 0.2s ease;
+    }
+  }
+
   .navbar__link {
+    position: relative;
+    z-index: 1;
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 500;
     color: var(--color-text-secondary);
     text-decoration: none;
-    position: relative;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
     transition: color 0.25s ease;
   }
-  
-  .navbar__link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 1px;
-    background-color: var(--color-accent-primary);
-    transition: width 0.25s ease;
-  }
-  
+
   .navbar__link:hover {
     color: var(--color-text-primary);
-  }
-
-  .navbar__link:hover::after {
-    width: 100%;
   }
 
   .navbar__link--active {
     color: var(--color-text-primary);
   }
-
-  .navbar__link--active::after {
-    width: 100%;
-    background-color: var(--color-accent-primary);
-  }
   
   .navbar__cta {
+    position: relative;
     display: none;
+    overflow: hidden;
     font-family: var(--font-body);
     font-size: 14px;
     font-weight: 600;
@@ -108,16 +206,45 @@
     white-space: nowrap;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  
+
   @media (min-width: 1024px) {
     .navbar__cta {
       display: inline-block;
     }
   }
-  
+
+  .navbar__cta-text {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Barrido de brillo diagonal al hover, en vez de solo escalar/ensombrecer
+     (el gesto habitual en cualquier botón). */
+  .navbar__cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.55s var(--ease-out-expo);
+  }
+
   .navbar__cta:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 229, 160, 0.35);
+  }
+
+  .navbar__cta:hover::before {
+    left: 130%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar__cta::before {
+      display: none;
+    }
   }
   
   .navbar__toggle {

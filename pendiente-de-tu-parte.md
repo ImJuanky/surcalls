@@ -2,18 +2,11 @@
 
 Todo lo que la review de diseño señaló y podía resolverse con código ya está aplicado y verificado con build limpio: favicon roto, contraste AA, copy del trust-bar, iconografía emoji → SVG propio, ritmo vertical, escala tipográfica de títulos, scroll-spy + accesibilidad del menú móvil, el indicador deslizante de Servicios (ahora se mide del DOM real en vez de asumir alturas iguales), el hueco del hero en tablet, 2-3 secciones con su propio gesto de animación, y el tono de copy de "Qué hacemos" (ahora habla de beneficio, no de arquitectura, como el resto de la web).
 
-Quedan cinco cosas que no puedo resolver yo solo porque requieren una decisión tuya, un activo que no tengo, o una verificación que solo se puede hacer en un dispositivo real.
+Quedan cuatro cosas que no puedo resolver yo solo porque requieren una decisión tuya, un activo que no tengo, o una verificación que solo se puede hacer en un dispositivo real.
 
-## 1. Decisión sobre el logo metálico
+## 1. Logo metálico — ya integrado en el navbar, footer pendiente
 
-En `/public/favicon.png` hay un logotipo real — una marca en forma de flecha/diamante metálico con el wordmark "CALLS" — que no se usa en ningún sitio salvo, ahora, como favicon. El navbar y el footer siguen usando texto estilizado ("Sur**Calls**"), no ese logomark.
-
-Tienes dos caminos, y solo tú puedes elegir:
-
-- **Integrarlo**: lo llevo al navbar y al footer como icono junto al wordmark (28-32px). Riesgo: el acabado metálico/cromado no encaja del todo con el sistema plano oscuro+verde que tiene el resto de la web.
-- **Descartarlo conscientemente**: diseñamos (o encargamos) un logomark nuevo, simple y geométrico, coherente con el sistema actual — al estilo Linear o Vercel.
-
-Dime cuál prefieres y lo implemento.
+Recorté solo la marca (el diamante/flecha, sin el texto "CALLS" para no duplicar el wordmark "SurCalls") en `/public/logo-mark.png`, con transparencia real, y la integré en el navbar junto al texto, con una animación de flotación permanente y un efecto 3D que sigue al cursor al pasar el ratón por encima. El footer todavía usa solo el texto estilizado — dime si quieres que lleve el mismo logomark ahí también (sin el efecto 3D, sería una versión estática).
 
 ## 2. Segundo camino de conversión de baja fricción
 
