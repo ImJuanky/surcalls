@@ -224,6 +224,106 @@
     border-radius:999px;padding:.5em 1em;
   }
 
+  /* ---------------- NFC demo (tap → review) ---------------- */
+  .nfc-demo{
+    margin-top:48px;background:var(--dark-bg);border-radius:var(--radius);
+    padding:clamp(28px,4vw,40px) clamp(24px,4vw,36px);
+    display:flex;align-items:center;gap:clamp(28px,4vw,48px);flex-wrap:wrap;
+  }
+  @media (max-width:680px){ .nfc-demo{flex-direction:column} }
+
+  .demo-stage{position:relative;width:240px;height:150px;flex:none;margin-inline:auto}
+  .demo-card{
+    position:absolute;right:14px;top:50%;transform:translateY(-50%);
+    width:60px;height:40px;border-radius:8px;
+    background:linear-gradient(135deg,#1B2333,#0A0E17);border:1px solid var(--dark-border);
+  }
+  .demo-card::after{
+    content:"";position:absolute;right:9px;top:9px;width:15px;height:15px;border-radius:50%;
+    border:1.5px solid var(--accent-fill);box-shadow:0 0 0 4px rgba(0,229,160,.14) inset;
+  }
+  .demo-ripple{
+    position:absolute;right:22px;top:50%;width:13px;height:13px;margin-top:-6.5px;
+    border-radius:50%;border:1.5px solid var(--accent-fill);opacity:0;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .demo-ripple{animation:demoRipple 7s var(--ease) infinite}
+    .demo-ripple.r2{animation-delay:.35s}
+  }
+  .demo-phone{
+    position:absolute;left:8px;top:50%;width:64px;height:118px;margin-top:-59px;
+    border-radius:15px;background:#1B2333;border:2px solid var(--dark-border);
+    box-shadow:0 14px 28px -14px rgba(0,0,0,.55);
+  }
+  @media (prefers-reduced-motion:no-preference){ .demo-phone{animation:demoPhoneMove 7s var(--ease) infinite} }
+  .demo-phone::before{
+    content:"";position:absolute;left:50%;top:9px;transform:translateX(-50%);
+    width:18px;height:3px;border-radius:2px;background:var(--dark-border);
+  }
+  .demo-phone::after{
+    content:"";position:absolute;inset:15px 5px;border-radius:7px;
+    background:radial-gradient(60% 60% at 50% 40%,rgba(0,229,160,.18),transparent 70%);
+  }
+  .demo-result{
+    flex:1 1 240px;min-width:220px;background:var(--dark-surface);border:1px solid var(--dark-border);
+    border-radius:var(--radius-sm);padding:18px 20px;
+  }
+  @media (prefers-reduced-motion:no-preference){ .demo-result{animation:demoResultIn 7s var(--ease) infinite} }
+  @media (prefers-reduced-motion:reduce){ .demo-result{opacity:1} }
+  .demo-result-head{display:flex;align-items:center;gap:10px}
+  .demo-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent-fill),#00B884);flex:none}
+  .demo-result-name{font-weight:600;color:var(--dark-text);font-size:.92rem}
+  .demo-stars{display:flex;gap:3px;margin-top:3px}
+  .demo-stars svg{width:15px;height:15px;color:var(--accent-fill);transform:scale(0);opacity:0}
+  @media (prefers-reduced-motion:no-preference){ .demo-stars svg{animation:demoStar 7s var(--ease) infinite} }
+  @media (prefers-reduced-motion:reduce){ .demo-stars svg{transform:scale(1);opacity:1} }
+  .demo-stars svg:nth-child(1){animation-delay:0s}
+  .demo-stars svg:nth-child(2){animation-delay:.16s}
+  .demo-stars svg:nth-child(3){animation-delay:.32s}
+  .demo-stars svg:nth-child(4){animation-delay:.48s}
+  .demo-stars svg:nth-child(5){animation-delay:.64s}
+  .demo-result-text{color:var(--dark-text-muted);font-size:.88rem;margin-top:10px;font-style:italic}
+  .demo-result-badge{
+    display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+    font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.03em;color:var(--accent-fill);opacity:0;
+  }
+  .demo-result-badge svg{width:13px;height:13px}
+  @media (prefers-reduced-motion:no-preference){ .demo-result-badge{animation:demoBadgeIn 7s var(--ease) infinite} }
+  @media (prefers-reduced-motion:reduce){ .demo-result-badge{opacity:1} }
+  .demo-caption{margin-top:14px;font-size:.88rem;color:var(--text-muted)}
+
+  @keyframes demoPhoneMove{
+    0%,6%{transform:translateX(0) rotate(0deg)}
+    26%{transform:translateX(88px) rotate(-6deg)}
+    34%,84%{transform:translateX(88px) rotate(-6deg)}
+    96%,100%{transform:translateX(0) rotate(0deg)}
+  }
+  @keyframes demoRipple{
+    0%,24%{transform:scale(.5);opacity:0}
+    30%{transform:scale(.5);opacity:.9}
+    46%{transform:scale(2.2);opacity:0}
+    100%{opacity:0}
+  }
+  @keyframes demoResultIn{
+    0%,33%{opacity:0;transform:translateY(10px) scale(.97)}
+    40%{opacity:1;transform:translateY(0) scale(1)}
+    86%{opacity:1;transform:translateY(0) scale(1)}
+    94%,100%{opacity:0;transform:translateY(10px) scale(.97)}
+  }
+  @keyframes demoStar{
+    0%,40%{transform:scale(0);opacity:0}
+    46%{transform:scale(1.2);opacity:1}
+    50%{transform:scale(1);opacity:1}
+    86%{transform:scale(1);opacity:1}
+    92%,100%{transform:scale(0);opacity:0}
+  }
+  @keyframes demoBadgeIn{
+    0%,64%{opacity:0;transform:translateY(4px)}
+    70%{opacity:1;transform:translateY(0)}
+    86%{opacity:1;transform:translateY(0)}
+    92%,100%{opacity:0;transform:translateY(4px)}
+  }
+
   .tabs{margin-top:56px}
   .tab-list{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--border);padding-bottom:0}
   .tab-btn{
@@ -533,6 +633,36 @@
           <span class="chip">Cualquier acción que definamos juntos</span>
         </div>
       </div>
+
+      <div class="nfc-demo reveal">
+        <div class="demo-stage" aria-hidden="true">
+          <div class="demo-phone"></div>
+          <span class="demo-ripple"></span>
+          <span class="demo-ripple r2"></span>
+          <div class="demo-card"></div>
+        </div>
+        <div class="demo-result" aria-hidden="true">
+          <div class="demo-result-head">
+            <div class="demo-avatar"></div>
+            <div>
+              <div class="demo-result-name">Cliente</div>
+              <div class="demo-stars">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.98 6.04 6.67.97-4.83 4.7 1.14 6.64L12 17.77l-5.96 3.08 1.14-6.64-4.83-4.7 6.67-.97L12 2.5z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.98 6.04 6.67.97-4.83 4.7 1.14 6.64L12 17.77l-5.96 3.08 1.14-6.64-4.83-4.7 6.67-.97L12 2.5z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.98 6.04 6.67.97-4.83 4.7 1.14 6.64L12 17.77l-5.96 3.08 1.14-6.64-4.83-4.7 6.67-.97L12 2.5z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.98 6.04 6.67.97-4.83 4.7 1.14 6.64L12 17.77l-5.96 3.08 1.14-6.64-4.83-4.7 6.67-.97L12 2.5z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.98 6.04 6.67.97-4.83 4.7 1.14 6.64L12 17.77l-5.96 3.08 1.14-6.64-4.83-4.7 6.67-.97L12 2.5z"/></svg>
+              </div>
+            </div>
+          </div>
+          <p class="demo-result-text">"Súper rápido, ni tuve que abrir el móvil casi."</p>
+          <span class="demo-result-badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Reseña publicada en Google
+          </span>
+        </div>
+      </div>
+      <p class="demo-caption reveal">Así de simple: acerca el móvil a la tarjeta y el cliente deja una reseña de 5 estrellas en Google — sin abrir ninguna app.</p>
 
       <div class="tabs reveal">
         <div class="tab-list" role="tablist" aria-label="Casos de uso por sector">
