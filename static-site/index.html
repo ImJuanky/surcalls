@@ -448,16 +448,26 @@
   @media (max-width:600px){ .founder-photo::before{inset:auto -8px -10px auto} }
 
   /* ---------------- Personal banner ---------------- */
-  .banner-cta{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(76px,12vw,140px);color:#fff;text-align:center}
+  .banner-cta{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(72px,11vw,130px);color:#fff}
   .banner-photo{position:absolute;inset:0;z-index:0}
   .banner-photo img{width:100%;height:100%;object-fit:cover;object-position:66% 32%}
-  .banner-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,14,11,.4) 0%,rgba(6,14,11,.72) 62%,rgba(6,14,11,.9) 100%)}
-  .banner-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:28px;max-width:740px;margin-inline:auto}
+  .banner-photo::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(100deg,rgba(6,14,11,.92) 0%,rgba(6,14,11,.8) 30%,rgba(6,14,11,.4) 54%,rgba(6,14,11,.1) 74%),
+      linear-gradient(180deg,rgba(6,14,11,0) 60%,rgba(6,14,11,.3) 100%);
+  }
+  .banner-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:28px;max-width:540px;text-align:left}
   .banner-eyebrow{color:var(--mint);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:var(--fs-small)}
-  .banner-quote{font-size:clamp(1.4rem,1.1rem + 1.2vw,2rem);line-height:1.4;letter-spacing:-.006em;text-wrap:balance}
+  .banner-quote{font-size:clamp(1.4rem,1.1rem + 1.2vw,2rem);line-height:1.4;letter-spacing:-.006em}
   .banner-quote em{font-family:var(--ff-display);font-style:italic;font-weight:500}
   .banner-cta .btn-primary{--btn-bg:var(--mint);--btn-fg:var(--accent-contrast)}
-  @media (max-width:600px){ .banner-photo img{object-position:58% 28%} }
+  @media (max-width:900px){ .banner-content{max-width:440px} }
+  @media (max-width:600px){
+    .banner-photo img{object-position:70% 28%}
+    .banner-photo::after{background:linear-gradient(180deg,rgba(6,14,11,.5) 0%,rgba(6,14,11,.62) 45%,rgba(6,14,11,.9) 100%)}
+    .banner-content{max-width:none}
+  }
 
   /* ---------------- Sectors ---------------- */
   .sectors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line-strong);border-left:1px solid var(--line-strong)}
