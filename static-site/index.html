@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap">
-<link rel="preload" as="image" href="juan-carlos-surcalls.webp" fetchpriority="high">
+<link rel="preload" as="image" href="juan-carlos-trabajando.webp" fetchpriority="high">
 
 <script type="application/ld+json">
 {
@@ -239,7 +239,7 @@
     position:relative;border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-2);
     aspect-ratio:874/682;box-shadow:var(--shadow-lg);
   }
-  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
   .name-tag{
     position:absolute;right:16px;bottom:16px;z-index:2;
     display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;
@@ -297,7 +297,7 @@
   }
   @media (max-width:600px){
     .hero-photo{aspect-ratio:1/1.02}
-    .hero-photo img{object-position:78% 30%}
+    .hero-photo img{object-position:48% 38%}
     .name-tag{left:12px;right:auto;top:12px;bottom:auto;font-size:.8rem;padding:6px 12px 6px 6px}
     .name-tag .dot{width:24px;height:24px}
     .review-card{display:none}
@@ -472,6 +472,17 @@
     .founder-photo{max-width:420px;margin-inline:auto}
   }
   @media (max-width:600px){ .founder-photo::before{inset:auto -8px -10px auto} }
+
+  /* ---------------- Personal banner ---------------- */
+  .banner-cta{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(76px,12vw,140px);color:#fff;text-align:center}
+  .banner-photo{position:absolute;inset:0;z-index:0}
+  .banner-photo img{width:100%;height:100%;object-fit:cover;object-position:66% 32%}
+  .banner-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,14,11,.4) 0%,rgba(6,14,11,.72) 62%,rgba(6,14,11,.9) 100%)}
+  .banner-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:28px;max-width:740px;margin-inline:auto}
+  .banner-eyebrow{color:var(--mint);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:var(--fs-small)}
+  .banner-quote{font-size:clamp(1.35rem,1.1rem + 1.1vw,1.9rem);font-weight:700;line-height:1.42;letter-spacing:-.012em;text-wrap:balance}
+  .banner-cta .btn-primary{--btn-bg:var(--mint);--btn-fg:var(--accent-contrast)}
+  @media (max-width:600px){ .banner-photo img{object-position:58% 28%} }
 
   /* ---------------- Sectors ---------------- */
   .sectors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
@@ -997,8 +1008,8 @@
 
       <figure class="hero-media">
         <div class="hero-photo">
-          <img src="juan-carlos-surcalls.webp" width="874" height="682" fetchpriority="high" decoding="async"
-               alt="Juan Carlos, fundador de SurCalls, trabajando con su portátil en la oficina de SurCalls">
+          <img src="juan-carlos-trabajando.webp" width="456" height="430" fetchpriority="high" decoding="async"
+               alt="Juan Carlos, fundador de SurCalls, trabajando con su portátil en una oficina luminosa">
           <figcaption class="name-tag">
             <span class="dot"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
             <span><strong>Juan Carlos</strong><span>Fundador de SurCalls</span></span>
@@ -1299,8 +1310,8 @@
     <div class="wrap founder">
       <figure class="founder-photo reveal">
         <div class="frame">
-          <img src="juan-carlos-retrato.webp" width="460" height="575" loading="lazy" decoding="async"
-               alt="Retrato de Juan Carlos, fundador de SurCalls, en su puesto de trabajo con una taza de SurCalls">
+          <img src="juan-carlos-fundador.webp" width="344" height="431" loading="lazy" decoding="async"
+               alt="Retrato de Juan Carlos, fundador de SurCalls">
         </div>
         <figcaption><span><strong>Juan Carlos</strong><span>Fundador de SurCalls</span></span></figcaption>
       </figure>
@@ -1366,7 +1377,7 @@
         <span class="eyebrow">Preguntas frecuentes</span>
         <h2 id="preguntas-title">Antes de que lo preguntes.</h2>
         <div class="ask">
-          <img src="juan-carlos-avatar.webp" width="180" height="180" loading="lazy" decoding="async" alt="">
+          <img src="juan-carlos-perfil.webp" width="180" height="180" loading="lazy" decoding="async" alt="">
           <p><b>¿Tienes otra duda?</b> Escríbenos y te la resuelvo yo directamente.</p>
         </div>
         <a class="btn btn-primary" href="#contacto">Hacer una pregunta</a>
@@ -1405,6 +1416,18 @@
     </div>
   </section>
 
+  <!-- ============================ BANNER PERSONAL ============================ -->
+  <section class="banner-cta" aria-labelledby="banner-title">
+    <div class="banner-photo" aria-hidden="true">
+      <img src="juan-carlos-ciudad.webp" width="907" height="378" loading="lazy" decoding="async" alt="">
+    </div>
+    <div class="wrap banner-content reveal">
+      <span class="banner-eyebrow">Detrás de cada automatización</span>
+      <p class="banner-quote" id="banner-title">No monto un negocio para desaparecer detrás de un chat. Sigo aquí, al otro lado, para que automatizar tu negocio nunca se sienta frío.</p>
+      <a class="btn btn-primary" href="#contacto">Cuéntame tu caso <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </section>
+
   <!-- ============================ CONTACT ============================ -->
   <section class="section section--dark" id="contacto" aria-labelledby="contacto-title">
     <div class="wrap contact-grid">
@@ -1413,7 +1436,7 @@
         <h2 id="contacto-title">Cuéntanos qué te quita tiempo. Te decimos cómo solucionarlo.</h2>
         <p class="lead">No hace falta que sepas qué tecnología necesitas. Con dos líneas sobre tu negocio es suficiente para empezar.</p>
         <div class="responder">
-          <img src="juan-carlos-avatar.webp" width="180" height="180" loading="lazy" decoding="async" alt="Juan Carlos, fundador de SurCalls">
+          <img src="juan-carlos-perfil.webp" width="180" height="180" loading="lazy" decoding="async" alt="Juan Carlos, fundador de SurCalls">
           <span><b>Te responde Juan Carlos</b><span>Fundador de SurCalls, personalmente.</span></span>
         </div>
         <ul class="contact-list">
@@ -1529,7 +1552,7 @@
 
 <!-- Mobile sticky CTA -->
 <div class="sticky-cta" id="stickyCta" aria-hidden="true">
-  <img src="juan-carlos-avatar.webp" width="180" height="180" alt="" loading="lazy" decoding="async">
+  <img src="juan-carlos-perfil.webp" width="180" height="180" alt="" loading="lazy" decoding="async">
   <p>¿Hablamos?<span>Te responde Juan Carlos</span></p>
   <a class="btn" href="#contacto" tabindex="-1">Cuéntanos tu caso</a>
 </div>
