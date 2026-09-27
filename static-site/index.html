@@ -457,16 +457,16 @@
       linear-gradient(100deg,rgba(6,14,11,.92) 0%,rgba(6,14,11,.8) 30%,rgba(6,14,11,.4) 54%,rgba(6,14,11,.1) 74%),
       linear-gradient(180deg,rgba(6,14,11,0) 60%,rgba(6,14,11,.3) 100%);
   }
-  .banner-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:28px;max-width:540px;text-align:left;padding-inline:var(--gutter)}
+  .banner-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:28px;text-align:left;padding-inline:var(--gutter);padding-left:clamp(28px,7vw,90px);max-width:clamp(300px,30vw,480px)}
   .banner-eyebrow{color:var(--mint);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:var(--fs-small)}
   .banner-quote{font-size:clamp(1.4rem,1.1rem + 1.2vw,2rem);line-height:1.4;letter-spacing:-.006em}
   .banner-quote em{font-family:var(--ff-display);font-style:italic;font-weight:500}
   .banner-cta .btn-primary{--btn-bg:var(--mint);--btn-fg:var(--accent-contrast)}
-  @media (max-width:900px){ .banner-content{max-width:440px} }
+  @media (max-width:900px){ .banner-content{max-width:min(420px,42vw);padding-left:clamp(24px,6vw,56px)} }
   @media (max-width:600px){
     .banner-photo img{object-position:70% 28%}
     .banner-photo::after{background:linear-gradient(180deg,rgba(6,14,11,.5) 0%,rgba(6,14,11,.62) 45%,rgba(6,14,11,.9) 100%)}
-    .banner-content{max-width:none}
+    .banner-content{max-width:none;padding-left:var(--gutter)}
   }
 
   /* ---------------- Sectors ---------------- */
