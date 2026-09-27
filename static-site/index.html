@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,600&display=swap">
 <link rel="preload" as="image" href="juan-carlos-trabajando.webp" fetchpriority="high">
 
 <script type="application/ld+json">
@@ -76,7 +77,7 @@
     /* legacy aliases used by the NFC demo component */
     --text:var(--ink);
     --text-muted:var(--muted);
-    --ff-display:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --ff-display:'Fraunces',Georgia,'Iowan Old Style','Palatino Linotype',serif;
     --ff-body:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
     --radius:22px;
 
@@ -114,9 +115,9 @@
   a{color:inherit}
   ::selection{background:var(--brand);color:#fff}
   h1,h2,h3,h4{font-family:var(--ff-display);margin:0;color:inherit;text-wrap:balance}
-  h1{font-size:var(--fs-h1);font-weight:800;line-height:1.04;letter-spacing:-.035em}
-  h2{font-size:var(--fs-h2);font-weight:750;font-weight:800;line-height:1.1;letter-spacing:-.03em}
-  h3{font-size:var(--fs-h3);font-weight:700;line-height:1.3;letter-spacing:-.012em}
+  h1{font-size:var(--fs-h1);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+  h2{font-size:var(--fs-h2);font-weight:600;line-height:1.14;letter-spacing:-.008em}
+  h3{font-size:var(--fs-h3);font-weight:600;line-height:1.32;letter-spacing:-.004em}
   p{margin:0}
   ul,ol{margin:0;padding:0;list-style:none}
 
@@ -234,7 +235,7 @@
   .assurances li{display:flex;align-items:center;gap:.5em;font-size:var(--fs-small);font-weight:600;color:var(--ink-2)}
   .assurances svg{width:18px;height:18px;color:var(--brand);flex:none}
 
-  .hero-media{position:relative;margin:0 0 36px}
+  .hero-media{position:relative;margin:0}
   .hero-photo{
     position:relative;border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-2);
     aspect-ratio:874/682;box-shadow:var(--shadow-lg);
@@ -251,57 +252,16 @@
   .name-tag strong{display:block;font-weight:800}
   .name-tag span{color:var(--muted);font-weight:600}
 
-  .float-card{
-    position:absolute;z-index:3;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.7);
-    border-radius:var(--radius-md);box-shadow:var(--shadow-md);color:var(--ink);
-  }
-  .tasks-card{left:-44px;bottom:-36px;width:272px;padding:14px 16px 10px}
-  .tasks-card h4{font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-  .tasks-card h4 .live{display:inline-flex;align-items:center;gap:6px;color:var(--brand);letter-spacing:.04em}
-  .tasks-card h4 .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(0,229,160,.2)}
-  .task{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line);font-size:.86rem;font-weight:600;line-height:1.3}
-  .task:first-of-type{border-top:0}
-  .task .ck{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--brand);color:#fff}
-  .task .ck svg{width:12px;height:12px}
-  .task .ck.pending{background:transparent;border:2px dashed var(--line-strong)}
-  .task em{margin-left:auto;font-style:normal;font-size:.72rem;font-weight:700;color:var(--brand);background:var(--brand-soft);padding:2px 8px;border-radius:999px;white-space:nowrap}
-  .task em.soft{color:var(--muted);background:var(--surface-2)}
-
-  .review-card{left:-28px;top:13%;display:flex;align-items:center;gap:12px;padding:12px 16px 12px 12px;max-width:260px}
-  .review-card .g{width:38px;height:38px;border-radius:12px;background:var(--brand-soft);display:grid;place-items:center;flex:none}
-  .review-card .g svg{width:20px;height:20px;color:var(--brand)}
-  .review-card .stars{color:#E8A916;letter-spacing:1px;font-size:.9rem;line-height:1}
-  .review-card p{font-size:.84rem;font-weight:700;line-height:1.3;margin-top:3px}
-  .review-card small{display:block;font-size:.74rem;color:var(--muted);font-weight:600}
-
-  @media (prefers-reduced-motion:no-preference){
-    .js .float-card{opacity:0;transform:translateY(14px);animation:floatIn .7s var(--ease) forwards}
-    .js .tasks-card{animation-delay:.35s}
-    .js .review-card{animation-delay:.9s}
-    @keyframes floatIn{to{opacity:1;transform:none}}
-  }
-
-  @media (max-width:1180px) and (min-width:961px){
-    .tasks-card .task:nth-of-type(3){display:none}
-  }
-  @media (max-width:1180px){
-    .tasks-card{left:-20px}
-    .review-card{left:-16px}
-  }
   @media (max-width:960px){
     .hero-grid{grid-template-columns:1fr;gap:44px}
     .hero-copy{max-width:640px}
     .hero-media{max-width:720px;width:100%;margin-inline:auto}
-    .tasks-card{left:16px;bottom:-28px}
-    .review-card{left:16px;top:16px}
   }
   @media (max-width:600px){
     .hero-photo{aspect-ratio:1/1.02}
     .hero-photo img{object-position:48% 38%}
     .name-tag{left:12px;right:auto;top:12px;bottom:auto;font-size:.8rem;padding:6px 12px 6px 6px}
     .name-tag .dot{width:24px;height:24px}
-    .review-card{display:none}
-    .tasks-card{left:12px;right:12px;bottom:-24px;width:auto;padding:12px 14px 8px}
     .cta-row{width:100%}
     .cta-row .btn{flex:1 1 220px}
   }
@@ -322,35 +282,33 @@
   }
 
   /* ---------------- Problems ---------------- */
-  .problem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-  .problem{
-    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
-    padding:26px 24px;display:flex;flex-direction:column;gap:10px;
-    transition:border-color .2s var(--ease),box-shadow .2s var(--ease)
-  }
-  .problem:hover{border-color:var(--line-strong);box-shadow:var(--shadow-sm)}
-  .problem .ic{width:44px;height:44px;border-radius:14px;background:var(--surface-2);display:grid;place-items:center;color:var(--brand);margin-bottom:6px}
-  .problem .ic svg{width:22px;height:22px}
-  .problem h3{font-size:1.08rem}
-  .problem p{color:var(--muted);font-size:.97rem;line-height:1.55}
+  .problem-list{border-top:1px solid var(--line-strong);display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .problem-row{display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:baseline;padding:26px 20px 26px 0;border-bottom:1px solid var(--line-strong)}
+  .problem-row:nth-child(odd){border-right:1px solid var(--line-strong)}
+  .problem-row:nth-child(even){padding-left:28px}
+  .problem-row .idx{font-family:var(--ff-display);font-style:italic;font-weight:500;font-size:1.7rem;color:var(--brand);line-height:1}
+  .problem-row h3{font-size:1.08rem;margin-bottom:6px}
+  .problem-row p{color:var(--muted);font-size:.97rem;line-height:1.55}
   .problem-close{
     margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;
     padding:24px 28px;border-radius:var(--radius-md);background:var(--ink);color:#fff
   }
   .problem-close p{font-size:clamp(1.05rem,1rem + .35vw,1.25rem);font-weight:700;letter-spacing:-.01em;max-width:46ch}
   .problem-close p span{color:var(--mint)}
-  @media (max-width:900px){ .problem-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  @media (max-width:760px){
+    .problem-list{grid-template-columns:1fr}
+    .problem-row{grid-template-columns:38px 1fr;gap:14px;padding:20px 0}
+    .problem-row:nth-child(odd){border-right:0}
+    .problem-row:nth-child(even){padding-left:0}
+    .problem-row .idx{font-size:1.4rem}
+  }
   @media (max-width:600px){
-    .problem-grid{grid-template-columns:1fr;gap:12px}
-    .problem{flex-direction:row;align-items:flex-start;gap:16px;padding:20px 18px}
-    .problem .ic{margin:0;width:40px;height:40px}
-    .problem .txt{display:flex;flex-direction:column;gap:6px}
     .problem-close{padding:22px 20px}
     .problem-close .btn{width:100%}
   }
 
   /* ---------------- Services ---------------- */
-  .services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
   .service{
     position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;gap:12px;
@@ -359,7 +317,7 @@
   .service:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:transparent}
   .service .ic{width:52px;height:52px;border-radius:16px;background:var(--brand);color:#fff;display:grid;place-items:center;margin-bottom:6px}
   .service .ic svg{width:24px;height:24px}
-  .service h3{font-size:clamp(1.2rem,1.1rem + .4vw,1.42rem)}
+  .service h3{font-size:clamp(1.15rem,1.08rem + .3vw,1.32rem)}
   .service > p{color:var(--muted)}
   .service .result{
     margin-top:auto;padding-top:16px;border-top:1px solid var(--line);
@@ -367,9 +325,24 @@
   }
   .service .result svg{width:18px;height:18px;color:var(--brand);flex:none;margin-top:3px}
   .service .result b{color:var(--brand);font-weight:800}
-  .service .link-arrow{font-size:.95rem}
   .services-foot{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 20px;text-align:center;color:var(--muted);font-weight:600}
-  @media (max-width:760px){ .services{grid-template-columns:1fr} }
+  @media (max-width:960px){ .services{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  @media (max-width:600px){ .services{grid-template-columns:1fr} }
+
+  .service-feature{
+    margin-top:18px;position:relative;overflow:hidden;border-radius:var(--radius);
+    background:var(--ink);color:#fff;padding:clamp(28px,4vw,44px);
+    display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;
+  }
+  .service-feature .ic{width:56px;height:56px;border-radius:16px;background:var(--mint);color:var(--accent-contrast);display:grid;place-items:center;margin-bottom:14px}
+  .service-feature .ic svg{width:26px;height:26px}
+  .service-feature h3{color:#fff;font-size:clamp(1.25rem,1.1rem + .5vw,1.6rem)}
+  .service-feature > div > p{color:var(--dark-text-muted);max-width:52ch;margin-top:8px}
+  .service-feature .result{margin-top:16px;padding-top:16px;border-top:1px solid var(--dark-border);display:flex;gap:10px;align-items:flex-start;font-size:.95rem;font-weight:600;color:var(--dark-text)}
+  .service-feature .result svg{width:18px;height:18px;color:var(--mint);flex:none;margin-top:3px}
+  .service-feature .result b{color:var(--mint);font-weight:800}
+  .btn-mint{--btn-bg:var(--mint);--btn-fg:var(--accent-contrast)}
+  @media (max-width:700px){ .service-feature{grid-template-columns:1fr} .service-feature .btn{width:100%} }
 
   /* ---------------- NFC (dark) ---------------- */
   .nfc-top{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(32px,4vw,48px)}
@@ -458,7 +431,8 @@
   .founder-photo figcaption strong{display:block;font-size:1rem}
   .founder-photo figcaption span{color:#C8D6D0}
   .founder-body{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
-  .founder-body .quote{font-size:clamp(1.15rem,1.05rem + .5vw,1.45rem);line-height:1.5;font-weight:600;color:var(--ink);letter-spacing:-.012em}
+  .founder-body .quote{font-size:clamp(1.2rem,1.05rem + .6vw,1.55rem);line-height:1.45;color:var(--ink);letter-spacing:-.006em}
+  .founder-body .quote em{font-family:var(--ff-display);font-style:italic;font-weight:500}
   .founder-body .quote{padding-left:22px;border-left:3px solid var(--brand)}
   .founder-body p{color:var(--muted)}
   .promises{display:grid;gap:12px;width:100%;margin-top:4px}
@@ -480,20 +454,20 @@
   .banner-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,14,11,.4) 0%,rgba(6,14,11,.72) 62%,rgba(6,14,11,.9) 100%)}
   .banner-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:28px;max-width:740px;margin-inline:auto}
   .banner-eyebrow{color:var(--mint);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:var(--fs-small)}
-  .banner-quote{font-size:clamp(1.35rem,1.1rem + 1.1vw,1.9rem);font-weight:700;line-height:1.42;letter-spacing:-.012em;text-wrap:balance}
+  .banner-quote{font-size:clamp(1.4rem,1.1rem + 1.2vw,2rem);line-height:1.4;letter-spacing:-.006em;text-wrap:balance}
+  .banner-quote em{font-family:var(--ff-display);font-style:italic;font-weight:500}
   .banner-cta .btn-primary{--btn-bg:var(--mint);--btn-fg:var(--accent-contrast)}
   @media (max-width:600px){ .banner-photo img{object-position:58% 28%} }
 
   /* ---------------- Sectors ---------------- */
-  .sectors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-  .sector{display:flex;flex-direction:column;gap:4px;padding:18px 18px 16px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--line);transition:border-color .2s var(--ease),transform .2s var(--ease)}
-  .sector:hover{border-color:var(--brand);transform:translateY(-2px)}
+  .sectors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line-strong);border-left:1px solid var(--line-strong)}
+  .sector{display:flex;flex-direction:column;gap:4px;padding:20px 22px;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);transition:background-color .2s var(--ease)}
+  .sector:hover{background:var(--surface)}
   .sector b{font-size:1rem;font-weight:800;letter-spacing:-.01em}
   .sector span{font-size:.9rem;color:var(--muted);line-height:1.45}
   .sectors-note{margin-top:22px;color:var(--muted);text-align:center}
   .sectors-note a{color:var(--brand);font-weight:700}
-  @media (max-width:900px){ .sectors{grid-template-columns:repeat(2,minmax(0,1fr))} }
-  @media (max-width:380px){ .sectors{grid-template-columns:1fr} }
+  @media (max-width:640px){ .sectors{grid-template-columns:1fr} }
 
   /* ---------------- FAQ ---------------- */
   .faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px);align-items:start}
@@ -588,7 +562,7 @@
   .footer-top{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:40px;padding-block:clamp(48px,6vw,72px)}
   .site-footer .brand{color:var(--dark-text)}
   .footer-about p{margin-top:16px;max-width:36ch;font-size:.95rem}
-  .footer-col h4{font-size:var(--fs-xs);font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--dark-text);margin-bottom:16px}
+  .footer-col h4{font-family:var(--ff-body);font-size:var(--fs-xs);font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--dark-text);margin-bottom:16px}
   .footer-col ul{display:grid;gap:10px}
   .footer-col a{color:var(--dark-text-muted);text-decoration:none;font-size:.95rem;transition:color .15s var(--ease)}
   .footer-col a:hover{color:var(--dark-text)}
@@ -728,18 +702,6 @@
             <span><strong>Juan Carlos</strong><span>Fundador de SurCalls</span></span>
           </figcaption>
         </div>
-
-        <div class="float-card tasks-card" aria-hidden="true">
-          <h4>Hoy, en automático <span class="live">Activo</span></h4>
-          <div class="task"><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Llamada atendida y cita reservada<em>Auto</em></div>
-          <div class="task"><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Recordatorios de cita enviados<em>Auto</em></div>
-          <div class="task"><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Pregunta de horarios respondida<em>Auto</em></div>
-        </div>
-
-        <div class="float-card review-card" aria-hidden="true">
-          <span class="g"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9L12 3.5Z" fill="currentColor"/></svg></span>
-          <span><span class="stars">★★★★★</span><p>Nueva reseña en Google</p><small>desde tu tarjeta NFC</small></span>
-        </div>
       </figure>
     </div>
   </section>
@@ -753,31 +715,13 @@
         <p class="lead">Son las situaciones que más nos encontramos. Cada una cuesta horas a la semana y, muchas veces, clientes.</p>
       </div>
 
-      <div class="problem-grid stagger reveal">
-        <article class="problem">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 9h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <div class="txt"><h3>Las mismas preguntas, todo el día.</h3><p>Horarios, precios, disponibilidad. Siempre las mismas llamadas y los mismos mensajes.</p></div>
-        </article>
-        <article class="problem">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 8.4 8.4 0 0 0 2.6.42 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A16 16 0 0 1 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 .9.14 1.77.42 2.6a1 1 0 0 1-.25 1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M16 3l5 5M21 3l-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <div class="txt"><h3>Llamadas que no llegas a coger.</h3><p>Mientras atiendes a un cliente, otro llama. Y si nadie contesta, llama al siguiente de la lista.</p></div>
-        </article>
-        <article class="problem">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <div class="txt"><h3>La agenda, en papel o en tu cabeza.</h3><p>Citas apuntadas a mano, olvidos, clientes que no aparecen y huecos que se quedan vacíos.</p></div>
-        </article>
-        <article class="problem">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.8" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.8" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.8" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.8" stroke="currentColor" stroke-width="1.8"/></svg></span>
-          <div class="txt"><h3>Muchas herramientas, ninguna conectada.</h3><p>Una app para esto, otra para aquello y un Excel que solo entiendes tú.</p></div>
-        </article>
-        <article class="problem">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9L12 3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
-          <div class="txt"><h3>Clientes contentos, pero pocas reseñas.</h3><p>Salen satisfechos, pero nadie se acuerda de dejar su opinión si no se lo pones fácil.</p></div>
-        </article>
-        <article class="problem">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <div class="txt"><h3>Sabes que hay una forma mejor.</h3><p>Pero no tienes tiempo de buscarla, compararla y aprender a usarla.</p></div>
-        </article>
+      <div class="problem-list stagger reveal">
+        <div class="problem-row"><span class="idx" aria-hidden="true">01</span><div class="txt"><h3>Las mismas preguntas, todo el día.</h3><p>Horarios, precios, disponibilidad. Siempre las mismas llamadas y los mismos mensajes.</p></div></div>
+        <div class="problem-row"><span class="idx" aria-hidden="true">02</span><div class="txt"><h3>Llamadas que no llegas a coger.</h3><p>Mientras atiendes a un cliente, otro llama. Y si nadie contesta, llama al siguiente de la lista.</p></div></div>
+        <div class="problem-row"><span class="idx" aria-hidden="true">03</span><div class="txt"><h3>La agenda, en papel o en tu cabeza.</h3><p>Citas apuntadas a mano, olvidos, clientes que no aparecen y huecos que se quedan vacíos.</p></div></div>
+        <div class="problem-row"><span class="idx" aria-hidden="true">04</span><div class="txt"><h3>Muchas herramientas, ninguna conectada.</h3><p>Una app para esto, otra para aquello y un Excel que solo entiendes tú.</p></div></div>
+        <div class="problem-row"><span class="idx" aria-hidden="true">05</span><div class="txt"><h3>Clientes contentos, pero pocas reseñas.</h3><p>Salen satisfechos, pero nadie se acuerda de dejar su opinión si no se lo pones fácil.</p></div></div>
+        <div class="problem-row"><span class="idx" aria-hidden="true">06</span><div class="txt"><h3>Sabes que hay una forma mejor.</h3><p>Pero no tienes tiempo de buscarla, compararla y aprender a usarla.</p></div></div>
       </div>
 
       <div class="problem-close reveal">
@@ -810,18 +754,21 @@
           <p class="result"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Resultado:</b> menos llamadas para reservar y menos citas olvidadas.</span></p>
         </article>
         <article class="service">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9L12 3.5Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg></span>
-          <h3>Reseñas y clientes que vuelven</h3>
-          <p>Tarjetas NFC y herramientas que hacen fácil dejar una reseña, seguirte en redes o volver a reservar, justo cuando el cliente está satisfecho.</p>
-          <p class="result"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Resultado:</b> más reseñas en Google y más clientes que repiten.</span></p>
-          <a class="link-arrow" href="#nfc">Ver las tarjetas NFC <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </article>
-        <article class="service">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h10" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="18.5" cy="17.5" r="2.5" stroke="currentColor" stroke-width="1.9"/></svg></span>
           <h3>Procesos ordenados</h3>
           <p>Pasamos a digital lo que hoy vive en papel, notas sueltas o un Excel: presupuestos, pedidos, seguimiento de clientes.</p>
           <p class="result"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Resultado:</b> la información de tu negocio, ordenada y siempre a mano.</span></p>
         </article>
+      </div>
+
+      <div class="service-feature reveal">
+        <div>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9L12 3.5Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg></span>
+          <h3>Reseñas y clientes que vuelven</h3>
+          <p>Tarjetas NFC y herramientas que hacen fácil dejar una reseña, seguirte en redes o volver a reservar, justo cuando el cliente está satisfecho.</p>
+          <p class="result"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Resultado:</b> más reseñas en Google y más clientes que repiten.</span></p>
+        </div>
+        <a class="btn btn-mint" href="#nfc">Ver las tarjetas NFC <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
 
       <div class="services-foot reveal">
@@ -963,7 +910,7 @@
       <div class="founder-body reveal">
         <span class="eyebrow">Quién está detrás</span>
         <h2 id="quien-title">Detrás de SurCalls hay una persona, no un call center.</h2>
-        <p class="quote">Hola, soy Juan Carlos. Cuando hablas con SurCalls, hablas conmigo: entiendo cómo funciona tu negocio y te propongo solo lo que de verdad te va a ahorrar tiempo.</p>
+        <p class="quote"><em>Hola, soy Juan Carlos. Cuando hablas con SurCalls, hablas conmigo: entiendo cómo funciona tu negocio y te propongo solo lo que de verdad te va a ahorrar tiempo.</em></p>
         <ul class="promises">
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg><span><b>Hablas directamente conmigo.</b>Sin intermediarios ni tickets de soporte.</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19.5V5a1.5 1.5 0 0 1 1.5-1.5H19v17H5.5A1.5 1.5 0 0 1 4 19V19Zm0 0A1.5 1.5 0 0 1 5.5 18H19" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg><span><b>Te lo explico todo sin tecnicismos.</b>Sabrás qué hacemos, por qué y cuánto cuesta.</span></li>
@@ -1067,7 +1014,7 @@
     </div>
     <div class="wrap banner-content reveal">
       <span class="banner-eyebrow">Detrás de cada automatización</span>
-      <p class="banner-quote" id="banner-title">No monto un negocio para desaparecer detrás de un chat. Sigo aquí, al otro lado, para que automatizar tu negocio nunca se sienta frío.</p>
+      <p class="banner-quote" id="banner-title"><em>No monto un negocio para desaparecer detrás de un chat. Sigo aquí, al otro lado, para que automatizar tu negocio nunca se sienta frío.</em></p>
       <a class="btn btn-primary" href="#contacto">Cuéntame tu caso <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </section>
